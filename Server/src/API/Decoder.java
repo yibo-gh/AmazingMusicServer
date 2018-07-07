@@ -5,7 +5,9 @@ import Object.Node;
 
 public class Decoder {
 	
-	public static Object firewall (LinkedList ll) {
+	public static Object firewall (Object o) {
+		if (!o.getClass().equals(new LinkedList().getClass())) return "0x1A01";
+		LinkedList ll = (LinkedList) o;
 		Node cmdNode = ll.head;
 		if (!cmdNode.getInfo().getClass().equals("".getClass())) return "0x1A02";
 		String str = cmdNode.getInfo().toString();
@@ -23,7 +25,7 @@ public class Decoder {
 			 * Here, you should apply forwarder with switch case method.
 			 */
 			
-			default: return "0x1A01";
+			default: return "0x1A04";
 		}
 	}
 	
