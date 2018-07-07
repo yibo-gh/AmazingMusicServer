@@ -1,6 +1,8 @@
 package Object;
 
-public class Node {
+public class Node implements java.io.Serializable {
+	
+	private static final long serialVersionUID = -6137463104229125442L;
 	
 	/**
 	 * This node is used to hold the information for server, client, read file and so on.
@@ -14,7 +16,9 @@ public class Node {
 	 * Node(Object o) is a constructor function for Node above
 	 */
 	
-	Node(Object o) {
+	public Node() {}
+	
+	public Node(Object o) {
 		this.info = o;
 		this.prev = null;
 		this.next = null;

@@ -8,7 +8,7 @@ public class LinkedList implements java.io.Serializable{
 	public Node end;
 	private int length;
 	
-	public void linkedList(){
+	public LinkedList(){
 		this.head = null;
 		this.end = null;
 		this.length = 0;
