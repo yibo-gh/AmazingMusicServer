@@ -4,11 +4,18 @@ import Object.LinkedList;
 
 public class LinkedListTest {
 	
+	/**
+	 * Purpose: This is a test for the LinkedList
+	 * Input Requirement:nothing
+	 * Return: True or False
+	 */
+	
 	public static void main (String[] args) {
 		LinkedListTester();
 	}
-
+	
 	static void LinkedListTester() {
+		
 		LinkedList ll = new LinkedList();
 		int length = (int) (Math.random() * 10 + 1);
 		int[] iniArr = new int[length];
@@ -31,7 +38,9 @@ public class LinkedListTest {
 		Object[] obj = ll.toArray();
 		
 		task = 0x01;
+		
 		// comObj is the object array operated by local array, not transformed from LinkedList
+		
 		Object[] comObj = deleteItemFromObjArray(obj, deleteItem);
 		obj = deleteItemFromLinkedList(obj, deleteItem, ll, task);
 		if (!isObjArrSame(comObj, obj) || ll.getLength() != comObj.length) {

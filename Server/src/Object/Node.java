@@ -24,11 +24,14 @@ public class Node implements java.io.Serializable {
 		this.next = null;
 	}
 	
-	/**
-	 *  getinfo() is a function which used to get the information from users or requests.
-	 */
-	
 	public Object getInfo(){
+		
+		/**
+		 *  Purpose: This function which used to get the information from users or requests.
+		 *  Input Requirement: This function does not require an input.
+		 *  Output: This function return the Object.
+		 */
+		
 		return this.info;
 	}
 	

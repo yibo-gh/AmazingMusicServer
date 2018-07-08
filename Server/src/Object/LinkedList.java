@@ -42,7 +42,9 @@ public class LinkedList implements java.io.Serializable{
 	public void delete (Object o) {
 		
 		/**
-		 * This function is 
+		 * This function is used to deleting the node in the LinkedList
+		 * Input Requirement: This function requires a Object as parameter to run.
+		 * Return: This function should returns nothing.
 		 */
 		
 		if (this.head == null) return;
@@ -61,6 +63,13 @@ public class LinkedList implements java.io.Serializable{
 	}
 	
 	public void delete (int index) {
+		
+		/**
+		 * Purpose: This function is used for deleting the node in the LinkedList
+		 * Input Requirement: This function requires a number as the parameter to run.
+		 * Return: This function should returns nothing.
+		 */
+		
 		if (this.head == null) return;
 		
 		Node current = this.head;
@@ -116,7 +125,7 @@ public class LinkedList implements java.io.Serializable{
 		/**
 		 * Purpose: This function is cleaning up the LinkedList.
 		 * Input Requirement: This function does not require an input.
-		 * Output: This function does not have an output.
+		 * Return: This function should returns nothing.
 		 */
 		
 		this.head = null;
