@@ -6,6 +6,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import Object.LinkedList;
+import API.Decoder;
 
 public class CreateServerThread extends Thread {
 	private Socket clientSocket;
@@ -20,10 +21,15 @@ public class CreateServerThread extends Thread {
 	public void run() {
 		try {
 			ObjectInputStream objInStream = new ObjectInputStream(this.clientSocket.getInputStream()); // do I have to use bufferedinputstream?
-			LinkedList list = (LinkedList) objInStream.readObject();
-			System.out.println((String) list.head.getInfo()); // for ClientRequestTester
-			
 			ObjectOutputStream objOutStream = new ObjectOutputStream(clientSocket.getOutputStream());
+			
+			LinkedList userRequest = (LinkedList) objInStream.readObject();
+			System.out.println((String) userRequest.head.getInfo()); // for ClientRequestTester
+			//Object ob = Decoder.getCommand(userRequest)
+			//objOutStream.writeObject(ob);
+			//objOutStream.flush();
+			
+			
 			objOutStream.writeObject("done!"); // for ClientRequestTester
 			objOutStream.flush();
 			
