@@ -13,6 +13,7 @@ public class Decoder {
 		 * 2. Verify the object is a String
 		 * 3. Verify the object is a string which its length is larger than 0 and it
 		 * only contain letters or numbers.
+		 * 4. Verify the length of input LinkedList is longer than or equal with 2
 		 * Input Requirement:This function requires a Object as parameter to run.
 		 * Return: If this function returns "0x1A01","0x1A02","0x1A03", it means that input object is illegal
 		 * if this function return to getCommand(ll), it means that the input object is legal.
@@ -21,18 +22,24 @@ public class Decoder {
 		if (!o.getClass().equals(new LinkedList().getClass())) {
 			return "0x1A01";
 		}
+		
 		LinkedList ll = (LinkedList) o;
 		Node cmdNode = ll.head;
 		if (!cmdNode.getInfo().getClass().equals("".getClass())) {
 			return "0x1A02";
 		}
-		String str = cmdNode.getInfo().toString();
-
+		
+		String str = cmdNode.getInfo().toString();		
 		for (int i = 0; i < str.length(); i++) {
 			if (!isLetter(str.charAt(i))) {
 				return "0x1A03";
 			}
 		}
+		
+		if (ll.getLength() < 2 ) {
+			return "0x1A03"; // need to modify & unify Error Codes
+		}
+		
 		return getCommand(ll);
 	}
 
@@ -44,15 +51,28 @@ public class Decoder {
 		 * Output: If it is a valid comment, it will return whatever return the core function, else return to "0x1A04" 
 		 */
 		
-		switch ((String) ll.head.getInfo()) {
-
 		/*
-		 * Here, you should apply forwarder with switch case method.
+		 * To decide what request is, we need to look the request header, which is ll.head.
 		 */
-
-		default:
-			return "0x1A04";
+		switch ((String) ll.head.getInfo().toString()) {
+			case "abc": return CoreFunctions.upload(rest(ll));
+			/*
+			 * We need to add some lines after decide APIs
+			 */
+			default: return "0x1A04";
 		}
+	}
+	
+	private static LinkedList rest(LinkedList ll) {
+		
+		/**
+		 * Purpose: obtain the rest(all but head node) of a linkedlist
+		 * Input requirement: linkedlist
+		 * Output: the rest linkedlist.
+		 */
+		
+		ll.delete(0);
+		return ll;
 	}
 	
 	private static boolean isLetter(char c) {
@@ -64,9 +84,9 @@ public class Decoder {
 		 * Return: This function should return "true" or "false"
 		 */
 		
-		if (!(c < 0x41 && c > 0x5A) || !(c < 0x61 && c > 0x7A)) {
-			return false;
+		if ((Character.isDigit(c)) || (c >= 0x41 && c <= 0x5A) || (c >= 0x61 && c <= 0x7A)) {
+			return true;
 		}
-		return true;
+		return false;
 	}
 }

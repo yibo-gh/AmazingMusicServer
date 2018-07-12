@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import Object.LinkedList;
+
+import API.Decoder;
 
 public class CreateServerThread extends Thread {
 	private Socket clientSocket;
@@ -31,18 +32,16 @@ public class CreateServerThread extends Thread {
 			ObjectInputStream objInStream = new ObjectInputStream(this.clientSocket.getInputStream()); // do I have to use bufferedinputstream?
 			ObjectOutputStream objOutStream = new ObjectOutputStream(this.clientSocket.getOutputStream());
 			
-			/*
+      /*
 			 *  receive client request from the stream, 
 			 *  give the information to the decoder,
 			 *  get processed result from API part,
 			 *  and sent the result to client
 			 */
-			Object llInStream = objInStream.readObject();
-			LinkedList userRequest = (LinkedList) llInStream;
-			System.out.println((String) userRequest.head.getInfo()); // Note: need to change later
-			//Object ob = Decoder.firewall(userRequest);
-			//objOutStream.writeObject(ob);
-			//objOutStream.flush();
+			Object userRequest = objInStream.readObject();
+			Object ob = Decoder.firewall(userRequest); // check if userRequest is linkedlist in firewall
+			objOutStream.writeObject(ob);
+			objOutStream.flush();
 			
 			objOutStream.writeObject("done!"); // Note: need to change later
 			objOutStream.flush();
