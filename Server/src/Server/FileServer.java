@@ -76,7 +76,7 @@ public class FileServer implements Runnable {
 			 */
 			DataInputStream dtaInStream = new DataInputStream(socket.getInputStream());
 			System.out.println("Done1");
-			int userName = dtaInStream.readInt();
+			String userName = dtaInStream.readUTF();
 			System.out.println(userName);
 			String fileName = dtaInStream.readUTF();
 			//long fileLength = dtaInStream.readLong();
@@ -85,7 +85,7 @@ public class FileServer implements Runnable {
 			/*
 			 * If there isn't directory that named uploader's name, make it.
 			 */
-			File directory = new File(Integer.toString(userName));
+			File directory = new File(userName);
 			if(!directory.exists()) {
 				directory.mkdir();
 			}
