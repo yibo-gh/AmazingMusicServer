@@ -13,6 +13,7 @@ public class FileServerOperater{
 			System.out.println("File Server started");
 			
 			clientSocket = serverSocket.accept();
+			System.out.println("server successfully connected to client");
 			
 			int select = 1;
 			

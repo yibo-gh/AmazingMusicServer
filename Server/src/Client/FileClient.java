@@ -15,11 +15,12 @@ public class FileClient {
 			switch(selection) {
 			case 1: 
 				System.out.println("Client wants to send file");
-				Scanner sc1 = new Scanner(System.in);
+				//Scanner sc1 = new Scanner(System.in);
 
-			    System.out.print("Enter File name : ");
-			    String FileName1 = sc1.nextLine();
-
+			    //System.out.print("Enter File name : ");
+			    //String FileName1 = sc1.nextLine();
+				String FileName1 = "/Users/user/Desktop/fileReceiveServer.txt.txt";
+				System.out.println(FileName1);
 				FileGiveClient.fileGive(FileName1);
 				break;
 			case 2:

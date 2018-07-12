@@ -31,8 +31,8 @@ public class FileGiveClient {
 				
 				dtaOutStream = new DataOutputStream(socket.getOutputStream());
 				
+				dtaOutStream.writeInt(1);
 				dtaOutStream.writeUTF(file.getName());
-				dtaOutStream.writeLong(file.length());
 				dtaOutStream.write(filebyte, 0, filebyte.length);
 				dtaOutStream.flush();
 				
