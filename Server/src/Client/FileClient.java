@@ -25,10 +25,12 @@ public class FileClient {
 				break;
 			case 2:
 				System.out.println("Client wants to get file from server");
-				Scanner sc2 = new Scanner(System.in);
+				//Scanner sc2 = new Scanner(System.in);
 
-			    System.out.print("Enter File name : ");
-			    String FileName2 = sc2.nextLine();
+			    //System.out.print("Enter File name : ");
+			    //String FileName2 = sc2.nextLine();
+			    String FileName2 = "/Users/user/Desktop/cmpm80";
+				System.out.println(FileName2);
 			    
 			    FileReceiveClient.fileReceive(FileName2);
 			    break;
