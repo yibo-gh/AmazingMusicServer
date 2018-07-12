@@ -9,17 +9,24 @@ public class FileReceiveClient {
 	public static void fileReceive(String filename) {
 		Socket socket = null;
 		DataInputStream dtaInStream = null;
+		DataOutputStream dtaOutStream = null;
 		OutputStream outStream = null;
 		
 		try {
 			socket = new Socket("127.0.0.1", 18702); // Note: need to change later. need to decide IP address. 
 			dtaInStream = new DataInputStream(socket.getInputStream());
 			
-			filename = dtaInStream.readUTF();
+			dtaOutStream = new DataOutputStream(socket.getOutputStream());
+			
+			dtaOutStream.writeUTF("DongYeun");
+			dtaOutStream.writeUTF(filename);
+			
 			long filesize = dtaInStream.readLong();
 			byte[] buffer = new byte[1024];
 			
-			outStream = new FileOutputStream(("received from server" + filename));
+			File music = new File("/Users/user/Desktop/cmpm80/"+ filename);
+			
+			outStream = new FileOutputStream(music);
 			int bytesRead = dtaInStream.read(buffer, 0, (int) Math.min(buffer.length, filesize));
 			
 			while (filesize > 0 && bytesRead != -1) {

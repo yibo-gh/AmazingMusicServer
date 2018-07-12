@@ -9,15 +9,17 @@ public class FileServerOperater{
 		ServerSocket serverSocket = null;
 		Socket clientSocket = null;
 		try {
+			
 			serverSocket = new ServerSocket(18702);
 			System.out.println("File Server started");
 			
 			clientSocket = serverSocket.accept();
 			System.out.println("server successfully connected to client");
 			
-			int select = 1;
+			int select = 2;
+			System.out.println(select);
 			
-			new Thread(new FileServer(clientSocket, select)).start();
+			new Thread(new FileServer(clientSocket, 2)).start();
 			
 			System.out.println("FilserverOperaer over");
 			

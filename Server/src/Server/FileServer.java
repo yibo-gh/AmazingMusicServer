@@ -75,7 +75,7 @@ public class FileServer implements Runnable {
 			 * And the the fileName.
 			 */
 			DataInputStream dtaInStream = new DataInputStream(socket.getInputStream());
-			System.out.println("Done1");
+			System.out.println("Donedfsdfsdsf");
 			String userName = dtaInStream.readUTF();
 			System.out.println(userName);
 			String fileName = dtaInStream.readUTF();

@@ -13,7 +13,8 @@ public class FileClient {
 	public static void request(int selection) {
 		try {
 			switch(selection) {
-			case 1: 
+			case 1:
+				System.out.println("adf");
 				System.out.println("Client wants to send file");
 				//Scanner sc1 = new Scanner(System.in);
 
@@ -29,7 +30,7 @@ public class FileClient {
 
 			    //System.out.print("Enter File name : ");
 			    //String FileName2 = sc2.nextLine();
-			    String FileName2 = "/Users/user/Desktop/cmpm80";
+			    String FileName2 = "fileReceiveServer.txt.txt";
 				System.out.println(FileName2);
 			    
 			    FileReceiveClient.fileReceive(FileName2);
@@ -41,6 +42,6 @@ public class FileClient {
 		} 
 	}
 	public static void main(String[] args) {
-		request(1);
+		request(2);
 	}
 }
