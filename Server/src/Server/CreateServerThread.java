@@ -32,6 +32,12 @@ public class CreateServerThread extends Thread {
 			ObjectInputStream objInStream = new ObjectInputStream(this.clientSocket.getInputStream()); // do I have to use bufferedinputstream?
 			ObjectOutputStream objOutStream = new ObjectOutputStream(this.clientSocket.getOutputStream());
 			
+      /*
+			 *  receive client request from the stream, 
+			 *  give the information to the decoder,
+			 *  get processed result from API part,
+			 *  and sent the result to client
+			 */
 			Object userRequest = objInStream.readObject();
 			Object ob = Decoder.firewall(userRequest); // check if userRequest is linkedlist in firewall
 			objOutStream.writeObject(ob);

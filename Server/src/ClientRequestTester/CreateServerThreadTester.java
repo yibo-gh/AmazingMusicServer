@@ -31,9 +31,15 @@ public class CreateServerThreadTester extends Thread {
 			ObjectInputStream objInStream = new ObjectInputStream(this.clientSocket.getInputStream()); // do I have to use bufferedinputstream?
 			ObjectOutputStream objOutStream = new ObjectOutputStream(this.clientSocket.getOutputStream());
 			
+			/*
+			 *  receive client request from the stream, 
+			 *  give the information to the decoder,
+			 *  get processed result from API part,
+			 *  and sent the result to client
+			 */
 			LinkedList userRequest = (LinkedList) objInStream.readObject();
 			//System.out.println((String) userRequest.head.getInfo()); // for ClientRequestTester
-			//Object ob = Decoder.firewall(userRequest)
+			//Object ob = Decoder.firewall(userRequest);
 			//objOutStream.writeObject(ob);
 			//objOutStream.flush();
 			
