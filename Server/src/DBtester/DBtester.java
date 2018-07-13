@@ -8,8 +8,8 @@ import SQLpackage.Database;
 public class DBtester {
 
 	public static void main(String[] args) {
-		String dbName = "expriment1";
-		String query = "select * from author";
+		String dbName = "AmazingMusicDB";
+		String query = "select * from userInfo";
 		Database db = new Database(dbName);
 		ResultSet rs = null;
 		

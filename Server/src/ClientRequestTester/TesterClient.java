@@ -22,7 +22,7 @@ public class TesterClient {
 		SocketClientTester.request(list);
 		
 		list = new LinkedList();
-		list.add("Damn it's cool");
+		list.add("It's cool");
 		list.add(3);
 		list.add("Awesome");
 		SocketClientTester.request(list);
@@ -40,3 +40,13 @@ public class TesterClient {
 		SocketClientTester.request(list);
 	}
 }
+
+
+/*
+ * General java
+ * Core.uploadFile
+ * 
+ * Core function
+ * 
+ * register/login/upload file/download file
+ */

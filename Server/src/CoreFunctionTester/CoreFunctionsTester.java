@@ -1,4 +1,4 @@
-package API;
+package CoreFunctionTester;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,7 +7,7 @@ import Object.LinkedList;
 import Object.User;
 import SQLpackage.Database;
 
-public class CoreFunctions {
+public class CoreFunctionsTester {
 	
 	private static final String dbName = "AmazingMusicDB";
 	private static Database db = null;
