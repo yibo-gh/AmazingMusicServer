@@ -1,4 +1,4 @@
-package Client;
+package FileServerTester;
 
 import java.net.Socket;
 //import java.io.IOException;
@@ -32,8 +32,8 @@ public class FileReceiveClient {
 			//int bytesRead = dtaInStream.read(buffer, 0, (int) Math.min(buffer.length, filesize));
 			
 			while ((size = dtaInStream.read(buffer, 0, buffer.length)) != -1) {
-                outStream.write(buffer, 0, size);
-                outStream.flush();
+              outStream.write(buffer, 0, size);
+              outStream.flush();
 			}
 			
 		}catch(Exception e) {

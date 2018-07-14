@@ -1,4 +1,4 @@
-package Client;
+package FileServerTester;
 
 import java.net.Socket;
 //import java.io.IOException;
@@ -55,3 +55,4 @@ public class FileGiveClient {
 	}
 
 }
+
