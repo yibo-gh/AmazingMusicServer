@@ -10,11 +10,11 @@ public class DecoderTest {
 		}
 
 		static void DecoderTest() {
-		Object oT;
-		Object obj = randomElement(oT);
+			Object oT = null;
+			Object obj = randomElement(oT);
 		}
 		
-		public Object randomElement(Object o){
+		public static Object randomElement(Object o){
 			int randomInt = (int) (Math.random() * 100);
 			for (;randomInt <= 0x1F || randomInt >= 0x7F;) randomInt = (int) (Math.random() * 100);
 			o = (char) randomInt;
