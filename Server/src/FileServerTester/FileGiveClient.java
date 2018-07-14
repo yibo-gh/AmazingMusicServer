@@ -1,4 +1,4 @@
-package Client;
+package FileServerTester;
 
 import java.net.Socket;
 //import java.io.IOException;
@@ -31,6 +31,7 @@ public class FileGiveClient {
 				
 				dtaOutStream = new DataOutputStream(socket.getOutputStream());
 				
+				//dtaOutStream.writeInt(1);
 				dtaOutStream.writeUTF("DongYeun");
 				dtaOutStream.writeUTF(file.getName());
 				dtaOutStream.write(filebyte, 0, filebyte.length);
@@ -54,3 +55,4 @@ public class FileGiveClient {
 	}
 
 }
+

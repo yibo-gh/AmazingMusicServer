@@ -1,5 +1,6 @@
-package Server;
+package FileServerTester;
 
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -13,6 +14,7 @@ public class FileServerOperater{
 			serverSocket = new ServerSocket(18702);
 			System.out.println("File Server started");
 			
+			while(true) {
 			clientSocket = serverSocket.accept();
 			System.out.println("server successfully connected to client");
 			
@@ -20,11 +22,14 @@ public class FileServerOperater{
 			System.out.println(select);
 			
 			new Thread(new FileServer(clientSocket, 2)).start();
-			
-			System.out.println("FilserverOperaer over");
+			}
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				if (serverSocket != null) serverSocket.close();
+			}catch (IOException e) {};
 		}
 	}
 }

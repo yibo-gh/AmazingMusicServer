@@ -1,5 +1,4 @@
-package Client;
-
+package FileServerTester;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.FileInputStream;
@@ -7,7 +6,7 @@ import java.io.DataOutputStream;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class FileClient {
+public class FileClientOperater {
 	
 	@SuppressWarnings("finally")
 	public static void request(int selection) {
@@ -45,3 +44,4 @@ public class FileClient {
 		request(2);
 	}
 }
+
