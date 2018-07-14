@@ -19,7 +19,7 @@ public class FileServerOperater{
 			int select = 2;
 			System.out.println(select);
 			
-			new Thread(new FileServer(clientSocket, 2)).start();
+			new Thread(new FileServer(clientSocket, select)).start();
 			
 			System.out.println("FilserverOperaer over");
 			

@@ -21,17 +21,18 @@ public class FileReceiveClient {
 			dtaOutStream.writeUTF("DongYeun");
 			dtaOutStream.writeUTF(filename);
 			
-			long filesize = dtaInStream.readLong();
+			//long filesize = dtaInStream.readLong();
 			byte[] buffer = new byte[1024];
+			int size = 0;
 			
 			File music = new File("/Users/user/Desktop/cmpm80/"+ filename);
 			
 			outStream = new FileOutputStream(music);
-			int bytesRead = dtaInStream.read(buffer, 0, (int) Math.min(buffer.length, filesize));
+			//int bytesRead = dtaInStream.read(buffer, 0, (int) Math.min(buffer.length, filesize));
 			
-			while (filesize > 0 && bytesRead != -1) {
-                outStream.write(buffer, 0, bytesRead);
-                filesize -= bytesRead;
+			while ((size = dtaInStream.read(buffer, 0, buffer.length)) != -1) {
+                outStream.write(buffer, 0, size);
+                outStream.flush();
 			}
 			
 		}catch(Exception e) {
