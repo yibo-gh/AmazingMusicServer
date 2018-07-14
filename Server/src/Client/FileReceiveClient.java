@@ -18,6 +18,7 @@ public class FileReceiveClient {
 			
 			dtaOutStream = new DataOutputStream(socket.getOutputStream());
 			
+			//dtaOutStream.writeInt(2);
 			dtaOutStream.writeUTF("DongYeun");
 			dtaOutStream.writeUTF(filename);
 			
