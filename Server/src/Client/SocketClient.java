@@ -48,8 +48,6 @@ public class SocketClient {
 			objInStream = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
 			obj = objInStream.readObject();
 			
-			System.out.println((String) obj); // Note: need to change later
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {

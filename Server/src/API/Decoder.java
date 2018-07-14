@@ -55,7 +55,8 @@ public class Decoder {
 		 * To decide what request is, we need to look the request header, which is ll.head.
 		 */
 		switch ((String) ll.head.getInfo().toString()) {
-			case "abc": return CoreFunctions.upload(rest(ll));
+			case "reg": return CoreFunctions.register(rest(ll));
+			case "lgn": return CoreFunctions.login(rest(ll));
 			/*
 			 * We need to add some lines after decide APIs
 			 */
