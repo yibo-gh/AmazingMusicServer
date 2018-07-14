@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+
 import Object.LinkedList;
 
 public class SocketClient {
@@ -21,13 +22,24 @@ public class SocketClient {
 	 */
 	@SuppressWarnings("finally")
 	public static Object request(LinkedList list) {
+		/**
+		 * Purpose: Client send a request by a linkedlist which contains several information
+		 * 			For example, the first node is about the type of the request. (register, login, logout, ...)
+		 * Input Requirement: Expect a linkedlist which contains several information about request
+		 * Output: Return an object which server sent
+		 */
 		Socket socket = null;
 		ObjectOutputStream objOutStream = null;
 		ObjectInputStream objInStream = null;
 		Object obj = null;
 		
 		try {
-			socket = new Socket("127.0.0.1", 18701); // need to decide IP address.
+			/*
+			 * Open a socket and get connection. Then Send the input linkedlist to server.
+			 * Next, server will sent an object by the result of server works.
+			 * Return the object.
+			 */
+			socket = new Socket("127.0.0.1", 18701); // Note: need to change later. need to decide IP address. 
 			
 			objOutStream = new ObjectOutputStream(socket.getOutputStream());
 			objOutStream.writeObject(list);
@@ -35,8 +47,6 @@ public class SocketClient {
 			
 			objInStream = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
 			obj = objInStream.readObject();
-			
-			System.out.println((String) obj); // for ClientRequestTester
 			
 		} catch (IOException e) {
 			e.printStackTrace();
