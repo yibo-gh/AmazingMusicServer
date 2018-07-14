@@ -1,6 +1,7 @@
 package CoreFunctionTester;
 
 import Client.SocketClient;
+import Object.FileInfo;
 import Object.LinkedList;
 import Object.User;
 
@@ -20,12 +21,7 @@ public class TesterClient {
 		
 		/*
 		 * Test:
-		 * 1. Valid string request & Exist a correspoding core function
-		 * 2. Valid string request & No core function
-		 * 3. Valid string + number request & No core function
-		 * 4. Valid number request & No core function
-		 * 5. Invalid number request
-		 * 6. Invalid request (header only)
+		 * 
 		 */
 		/*
 		list = new LinkedList();
@@ -34,12 +30,6 @@ public class TesterClient {
 		list.add(user);
 		System.out.println((String) SocketClient.request(list));
 		*/
-		
-		list = new LinkedList();
-		list.add("lgn");
-		user = new User("icho", "ucsc.edu", "cofls8680*");
-		list.add(user);
-		verification(((String) SocketClient.request(list)).equals("LOGINSUCCEED"));
 		
 		list = new LinkedList();
 		list.add("lgn");
@@ -52,6 +42,18 @@ public class TesterClient {
 		user = new User("icho", "ucsc.edu", "cofls8680");
 		list.add(user);
 		verification(((String) SocketClient.request(list)).equals("PWINCORRECT"));
+		
+		list = new LinkedList();
+		list.add("lgn");
+		user = new User("icho", "ucsc.edu", "cofls8680*");
+		list.add(user);
+		String uid = ((String) SocketClient.request(list));
+		
+		list = new LinkedList();
+		list.add("upl");
+		FileInfo fInfo = new FileInfo(uid, "C:/Users/~~");
+		list.add(fInfo);
+		verification(((String) SocketClient.request(list)).equals("UPS"));
 	}
 	
 	private static void verification(boolean statement) {

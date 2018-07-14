@@ -57,6 +57,8 @@ public class Decoder {
 		switch ((String) ll.head.getInfo().toString()) {
 			case "reg": return CoreFunctions.register(rest(ll));
 			case "lgn": return CoreFunctions.login(rest(ll));
+			case "upl": return CoreFunctions.upload(rest(ll));
+			case "dnl": return "";
 			/*
 			 * We need to add some lines after decide APIs
 			 */
