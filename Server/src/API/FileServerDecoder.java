@@ -57,7 +57,9 @@ public static Object firewall(Object o) {
 		 * To decide what request is, we need to look the request header, which is ll.head.
 		 */
 		switch ((String) ll.head.getInfo().toString()) {
-			case "upload": return FileCoreFunctions.upload(rest(ll));
+			case "upload": 
+				FileCoreFunctions.upload(rest(ll));
+				return "OK";
 			case "download": return FileCoreFunctions.download(rest(ll));
 			/*
 			 * We need to add some lines after decide APIs

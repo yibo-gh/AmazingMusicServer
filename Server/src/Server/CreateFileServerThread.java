@@ -1,6 +1,12 @@
 package Server;
 
 import java.io.IOException;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileOutputStream;
+import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -41,6 +47,10 @@ public class CreateFileServerThread extends Thread {
 			Object userRequest = objInStream.readObject();
 			String sign = (String) FileServerDecoder.firewall(userRequest); // check if userRequest is linkedlist in firewall
 			System.out.println(sign);
+			
+			if(sign == "OK") {
+				System.out.println("Hi");
+			}
 			
 			objOutStream.writeObject(sign);
 			objOutStream.flush();
