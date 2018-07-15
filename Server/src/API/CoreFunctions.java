@@ -39,6 +39,7 @@ public class CoreFunctions {
 			 * Whether user has already registered ()
 			 */
 			rs = db.readDB("select pw from userInfo where emailUserName='" + user.getName() + "'");
+			// userName이 같으면 같은 유저로 취급해버리면?
 			if (rs.next()) {
 				rs.close();
 				db.closeDB();
@@ -50,7 +51,7 @@ public class CoreFunctions {
 			 * File should be match with proper uid (kind of tag).
 			 */
 			String result = db.updateDB("insert into userInfo (emailUserName, emailDomain, uid, pw) "
-								+ "values ('" + user.getName() + "', '" + user.getDomain() + "', '" + (++UID) + "', '" + user.getUserPW() + "')");
+								+ "values ('" + user.getName() + "', '" + user.getDomain() + "', '" + user.getUID() + "', '" + user.getUserPW() + "')");
 			if (result == "UPS") {
 				rs.close();
 				db.closeDB();
