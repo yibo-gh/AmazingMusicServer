@@ -8,14 +8,16 @@ import Object.User;
 public class TesterClient {
 	
 	public static void main(String[] args) {
+		
 		/**
-		 * Purpose: a test code for SocketClient.java, Server.java, CreateServerThread.java
+		 * Purpose: Test CoreFunctions.java and Decoder.java mainly.
 		 * 			Test (1) client send a random linkedlist request, 
 		 * 				 (2) server receive the request, 
 		 * 				 (3) verify that the server receive the linkedlist accurately.
 		 * Input requirement: None
 		 * Output: None
 		 */
+		
 		LinkedList list;
 		User user;
 		
