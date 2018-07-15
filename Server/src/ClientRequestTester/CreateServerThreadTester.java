@@ -38,10 +38,6 @@ public class CreateServerThreadTester extends Thread {
 			 *  and sent the result to client
 			 */
 			LinkedList userRequest = (LinkedList) objInStream.readObject();
-			//System.out.println((String) userRequest.head.getInfo()); // for ClientRequestTester
-			//Object ob = Decoder.firewall(userRequest);
-			//objOutStream.writeObject(ob);
-			//objOutStream.flush();
 			
 			objOutStream.writeObject(userRequest); // for Tester
 			objOutStream.flush();
