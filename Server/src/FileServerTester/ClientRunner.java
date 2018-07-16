@@ -3,6 +3,7 @@ package FileServerTester;
 import java.io.InputStream;
 
 import FileServerTester2.BasicClient;
+import FileServerTester2.FileGiveClient;
 import Object.FileInfo;
 import Object.LinkedList;
 
@@ -14,23 +15,35 @@ public class ClientRunner {
 	
 		System.out.println("1. basic client");
 		
-        int selection = 1;
+        int selection = 2;
         
         switch(selection) {
         case 1:
         	System.out.println("basic client selected");
         	basic();
         	break;
+        case 2:
+        	System.out.println("file give client selected");
+        	fileGive();
         }
 	}
 	
 	public static void basic() {
 		LinkedList list = new LinkedList();
-		FileInfo fileinfo = new FileInfo("DongYeun", "filename", "111");
+		FileInfo fileinfo = new FileInfo("DongYeun", "", "111");
 		list.add("upload");
 		list.add(fileinfo);
 		
-		BasicClient.basicRequest(list, "filename");
+		BasicClient.basicRequest(list, "");
+	}
+	
+	public static void fileGive() {
+		LinkedList list = new LinkedList();
+		FileInfo fileinfo = new FileInfo("DongYeun", "/Users/user/Desktop/fileReceiveServer.txt.txt", "111");
+		list.add("upload");
+		list.add(fileinfo);
+		
+		FileGiveClient.fileGiveRequest(list, "/Users/user/Desktop/fileReceiveServer.txt.txt");
 	}
 
 }

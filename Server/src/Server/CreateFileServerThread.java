@@ -5,12 +5,15 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+import Object.LinkedList;
+import Object.FileInfo;
 import API.FileServerDecoder;
 
 public class CreateFileServerThread extends Thread {
@@ -45,11 +48,29 @@ public class CreateFileServerThread extends Thread {
 			 *  and sent the result to client
 			 */
 			Object userRequest = objInStream.readObject();
-			String sign = (String) FileServerDecoder.firewall(userRequest); // check if userRequest is linkedlist in firewall
-			System.out.println(sign);
+			LinkedList sign = (LinkedList) FileServerDecoder.firewall(userRequest); // check if userRequest is linkedlist in firewall
+			System.out.println(sign.getClass());
+			System.out.println(sign.head.getInfo());
 			
-			if(sign == "OK") {
+			if(sign.head.getInfo() == "OK") {
 				System.out.println("Hi");
+				FileInfo flInfo = (FileInfo) sign.end.getInfo(); 
+				File music = new File("temporary" + File.separatorChar + flInfo.getFileSerial());
+				FileOutputStream fileOutStream = new FileOutputStream(music);
+				
+				DataInputStream dtaInStream = new DataInputStream(this.clientSocket.getInputStream());
+				byte[] buffer = new byte[1024];
+				int size = 0;
+
+				while((size = dtaInStream.read(buffer, 0, buffer.length)) != -1) {
+					fileOutStream.write(buffer, 0, size);
+					fileOutStream.flush();
+				}
+				
+				System.out.println("File "+flInfo.getFileSerial()+" sent to fileServer from client.");
+			}
+			else{
+				System.out.println("bb");
 			}
 			
 			objOutStream.writeObject(sign);

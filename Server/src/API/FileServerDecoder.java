@@ -58,9 +58,10 @@ public static Object firewall(Object o) {
 		 */
 		switch ((String) ll.head.getInfo().toString()) {
 			case "upload": 
-				FileCoreFunctions.upload(rest(ll));
-				return "OK";
-			case "download": return FileCoreFunctions.download(rest(ll));
+				return FileCoreFunctions.upload(rest(ll));
+				
+			case "download": 
+				return FileCoreFunctions.download(rest(ll));
 			/*
 			 * We need to add some lines after decide APIs
 			 */

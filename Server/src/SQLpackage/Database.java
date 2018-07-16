@@ -11,7 +11,7 @@ public class Database {
 	Connection conn = null;
 	Statement stmt = null;
 	String id = "root";
-	String pw = "cofls8680*";
+	String pw = "dl938271";
 	String dbName;
 	
 	public Database(String dbName) {
@@ -29,8 +29,8 @@ public class Database {
 		 * Output: None
 		 */
 		
-		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://127.0.0.1:3306/" + this.dbName + "?useSSL=false"; // "https://67.180.244.170:3306"
+		String driver = "com.mysql.cj.jdbc.Driver";
+		String url = "jdbc:mysql://127.0.0.1:3306/" + this.dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false"; // "https://67.180.244.170:3306"
 		
 		try {
 			/*

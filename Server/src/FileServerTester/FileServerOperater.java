@@ -18,7 +18,7 @@ public class FileServerOperater{
 			clientSocket = serverSocket.accept();
 			System.out.println("server successfully connected to client");
 			
-			int select = 2;
+			int select = 1;
 			System.out.println(select);
 			
 			new Thread(new FileServer(clientSocket, select)).start();
