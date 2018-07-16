@@ -1,11 +1,11 @@
 package API;
 
 import java.io.File;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.security.DigestInputStream;
+import java.io.InputStream ;
+import java.nio.file.Files;
 
 import Object.FileInfo;
 import Object.LinkedList;
@@ -61,6 +61,14 @@ private static final String dbName = "AmazingMusicDB";
 		
 		return "downloaded";
 	}
+	
+	public static void validate(FileInfo flInfo) {
+		String path = "temporary" + File.separatorChar + flInfo.getFileSerial();
+		System.out.println(path);
+		String md5Value = MD5Class.FileMD5Generator(path);
+		System.out.println(md5Value);
+	}
+		
 	
 
 }

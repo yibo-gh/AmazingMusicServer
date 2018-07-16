@@ -15,6 +15,7 @@ import java.net.Socket;
 import Object.LinkedList;
 import Object.FileInfo;
 import API.FileServerDecoder;
+import API.FileCoreFunctions;
 
 public class CreateFileServerThread extends Thread {
 	private Socket clientSocket;
@@ -62,17 +63,23 @@ public class CreateFileServerThread extends Thread {
 				byte[] buffer = new byte[1024];
 				int size = 0;
 
-				while((size = dtaInStream.read(buffer, 0, buffer.length)) != -1) {
+				while(true) {
+					size = dtaInStream.read(buffer, 0, buffer.length);
+					System.out.println(size);
 					fileOutStream.write(buffer, 0, size);
-					fileOutStream.flush();
+					if(size <= 1024) {
+						System.out.println("break");
+						break;
+					}
 				}
 				
-				System.out.println("File "+flInfo.getFileSerial()+" sent to fileServer from client.");
+				System.out.println("File sent to fileServer from client.");
+				FileCoreFunctions.validate(flInfo);
 			}
 			else{
 				System.out.println("bb");
 			}
-			
+			System.out.println("2");
 			objOutStream.writeObject(sign);
 			objOutStream.flush();
 			
