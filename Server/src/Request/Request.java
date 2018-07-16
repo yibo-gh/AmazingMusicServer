@@ -38,7 +38,8 @@ public class Request {
 			md = MessageDigest.getInstance("MD5");
 			md.update(Files.readAllBytes(Paths.get(directory)));
 		    byte[] digest = md.digest();
-		    BigInteger bigInt = new BigInteger(1,digest);		
+		    BigInteger bigInt = new BigInteger(1,digest);
+		    
 			FileInfo fInfo = new FileInfo(uid, directory, bigInt.toString(16));
 			list.add(fInfo);
 			String tmp = (String) SocketClient.request(list);

@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import API.MD5Class;
 import SQLpackage.Database;
 
 public class User implements java.io.Serializable {
@@ -30,7 +31,7 @@ public class User implements java.io.Serializable {
 		this.emailDomain = parts[1];
 		this.pw = pw;
 		
-		this.uid = generateUID(email);
+		this.uid = MD5Class.MD5Generator(email).substring(0, 10);
 	}
 	
 	private String generateUID(String email) { 
@@ -43,19 +44,21 @@ public class User implements java.io.Serializable {
 		tmp_nameCode = nameCode(this.emailUserName);
 		tmp_uid = tmp_domainCode+tmp_nameCode;
 		
-		return tmp_uid;
-		/*
 		try {
 			db = new Database("AmazingMusicDB");
 			db.connectDB();
-			
-			tmp_domainCode = domainCode(this.emailDomain);
-			tmp_nameCode = nameCode(this.emailUserName);
-			tmp_uid = tmp_domainCode+tmp_nameCode;
-			
-			rs = db.readDB("select uid from domainCode where uid='" + tmp_uid + "'");
-			if (rs.next()) {
-				tmp_uid += 1;
+						
+			rs = db.readDB("select uid from domainCode where uid='" + tmp_uid + "' LIMIT 1");
+			while (true) {
+				if (rs.next()) {
+					tmp_uid += 1;
+				}
+				else {
+					// rs.next() == false means there is no such uid in domainCode table.
+					break;
+				}
+				rs.close();
+				rs = db.readDB("select uid from domainCode where uid='" + tmp_uid + "' LIMIT 1");
 			}
 			
 			String result = db.updateDB("insert into domainCode (emailDomain, code, uid) "
@@ -65,25 +68,33 @@ public class User implements java.io.Serializable {
 				db.closeDB();
 				return "GENUIDERROR";
 			}
+			return tmp_uid;
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			tmp_uid = "GENUIDERROR";
-			
-		} finally {
 			if (rs != null) {
 				try {
 					rs.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e1) {}
 			}
 			if (db != null)
 				db.closeDB();
+			return "GENUIDERROR";	
 		}
-		
-		return tmp_uid;
-		*/
 	}
-	
+	/*
+	private String next(String s) {
+		**
+		 * return next String, which means s + 1
+		 *
+		String[] digits = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", 
+				           "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", 
+				           "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", 
+				           "4", "5", "6", "7", "8", "9"};
+		for (int i=s.length()-1; i>=0; i--) {
+			s = s.substring(0,i) + (s.charAt(i)+1) + s.substring(i+1,s.length());
+		}
+	}
+	*/
 	private String domainCode(String s) {
 		if (s.length() < 2)
 			return "INVALIDDOMAIN";
@@ -170,3 +181,42 @@ public class User implements java.io.Serializable {
 		return this.errorCode;
 	}
 }
+
+/*
+try {
+	db = new Database("AmazingMusicDB");
+	db.connectDB();
+	
+	tmp_domainCode = domainCode(this.emailDomain);
+	tmp_nameCode = nameCode(this.emailUserName);
+	tmp_uid = tmp_domainCode+tmp_nameCode;
+	
+	rs = db.readDB("select uid from domainCode where uid='" + tmp_uid + "'");
+	if (rs.next()) {
+		tmp_uid += 1;
+	}
+	
+	String result = db.updateDB("insert into domainCode (emailDomain, code, uid) "
+			+ "values ('"+this.emailDomain+"', '"+tmp_domainCode+"', '"+tmp_uid+"')");
+	if (result != "UPS") {
+		rs.close();
+		db.closeDB();
+		return "GENUIDERROR";
+	}
+	
+} catch (SQLException e) {
+	e.printStackTrace();
+	tmp_uid = "GENUIDERROR";
+	
+} finally {
+	if (rs != null) {
+		try {
+			rs.close();
+		} catch (SQLException e) {}
+	}
+	if (db != null)
+		db.closeDB();
+}
+
+return tmp_uid;
+*/

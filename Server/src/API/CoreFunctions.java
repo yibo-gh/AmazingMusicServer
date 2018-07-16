@@ -39,7 +39,7 @@ public class CoreFunctions {
 			if (rs.next()) {
 				rs.close();
 				db.closeDB();
-				return "REG:ISTERED";
+				return "REG:USEREXISTS";
 			}
 			
 			/*
