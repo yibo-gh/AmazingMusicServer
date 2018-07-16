@@ -27,7 +27,7 @@ public class TesterClient {
 		list = new LinkedList();
 		list.add("tst");
 		list.add("Server received a string.");
-		verification(SocketClientTester.request(list).equals("0x01"));
+		verification(SocketClientTester.request(list).equals("0x1A04"));
 		
 		list = new LinkedList();
 		list.add("tstsdfd");
