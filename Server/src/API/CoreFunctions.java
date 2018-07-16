@@ -1,8 +1,5 @@
 package API;
 
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -28,7 +25,7 @@ public class CoreFunctions {
 		
 		Object u = ll.head.getInfo();
 		if (!u.getClass().equals(new User().getClass()))
-			return "INVALIDREGINFO";
+			return "REG:INVALIDINFO";
 		User user = (User) u;
 		
 		try {
@@ -36,14 +33,13 @@ public class CoreFunctions {
 			db.connectDB();
 			
 			/*
-			 * Whether user has already registered ()
+			 * Whether user has already registered. (in the case of using same email)
 			 */
-			rs = db.readDB("select pw from userInfo where emailUserName='" + user.getName() + "'");
-			// userName이 같으면 같은 유저로 취급해버리면?
+			rs = db.readDB("select pw from userInfo where uid='"+user.getUID()+"'");
 			if (rs.next()) {
 				rs.close();
 				db.closeDB();
-				return "REGISTERED";
+				return "REG:ISTERED";
 			}
 			
 			/*
@@ -55,26 +51,22 @@ public class CoreFunctions {
 			if (result == "UPS") {
 				rs.close();
 				db.closeDB();
-				return "UPS";
+				return "REG:SUCCEED";
 			}
 			else {
 				rs.close();
 				db.closeDB();
-				return "INSERTFAIL";
+				return "REG:INSERTFAIL";
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			
-		} finally {
 			try {
 				if (rs != null) rs.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e1) {}
 			if (db != null) 
 				db.closeDB();
+			return "REG:ERROR";
 		}
-		
-		return "UNREACHABLE";
 	}
 	
 	public static String login (LinkedList ll) {
@@ -91,7 +83,7 @@ public class CoreFunctions {
 		
 		Object u = ll.head.getInfo();
 		if (!u.getClass().equals(new User().getClass()))
-			return "INVALIDREGINFO";
+			return "LOGIN:INVALIDINFO";
 		User user = (User) u;
 		
 		try {
@@ -101,25 +93,22 @@ public class CoreFunctions {
 			/*
 			 * Must have already registered.
 			 */
-			rs = db.readDB("select pw from userInfo where emailUserName='" + user.getName() + "'");
+			rs = db.readDB("select pw, uid from userInfo where emailUserName='"+user.getName()+"'"+" and emailDomain='"+user.getDomain()+"'");
 			if (!rs.next()) {
 				rs.close();
 				db.closeDB();
-				return "NOTREGISTERED";
+				return "LOGIN:NOTREG";
 			}
 			
 			if (!rs.getString("pw").equals(user.getUserPW())) {
 				rs.close();
 				db.closeDB();
-				return "PWINCORRECT";
+				return "LOGIN:PWINCORRECT";
 			}
 			
 			/*
 			 * return UID: need to modified.
 			 */
-			rs.close();
-			rs = db.readDB("select uid from userInfo where emailUserName='" + user.getName() + "'");
-			rs.next();
 			String uid = rs.getString("uid");
 			
 			rs.close();
@@ -127,17 +116,13 @@ public class CoreFunctions {
 			return uid;
 					
 		} catch (SQLException e) {
-			e.printStackTrace();
-			
-		} finally {
 			try {
 				if (rs != null) rs.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e1) {}
 			if (db != null) 
 				db.closeDB();
+			return "LOGIN:ERROR";
 		}
-		
-		return "UNREACHABLE";
 	}
 	
 	public static Object upload (LinkedList ll) {
@@ -155,28 +140,22 @@ public class CoreFunctions {
 		
 		Object f = ll.head.getInfo();
 		if (!f.getClass().equals(new FileInfo().getClass()))
-			return "INVALIDFILEINFO";
+			return "UPL:INVALIDFILEINFO";
 		FileInfo fInfo = (FileInfo) f;
 		
 		try {
 			db = new Database(dbName);
 			db.connectDB();
 			
-			String uid = fInfo.getUID();
-			String oriName = fInfo.getOriName();
-			
-			String fileSerial = MD5generator(uid+oriName); // Note: need to modify
-			String MD5 = MD5generator(oriName); // Note: need to modify
-			
-			rs = db.readDB("select fileSerial from postfile where fileSerial='" + fileSerial + "'");
+			rs = db.readDB("select fileSerial from postfile where fileSerial='" + fInfo.getFileSerial() + "'");
 			if (rs.next()) {
 				rs.close();
 				db.closeDB();
-				return "FILEEXISTS";
+				return "UPL:FILEEXISTS";
 			}
 			
 			String result = db.updateDB("insert into waitingfile (MD5, fileSerial, uid, oriName) "
-					+ "values ('"+MD5 +"', '"+fileSerial+"', '"+uid+"', '"+oriName+"')");
+					+"values ('"+fInfo.getMD5()+"', '"+fInfo.getFileSerial()+"', '"+fInfo.getUID()+"', '"+fInfo.getOriName()+"')");
 			if (result == "UPS") {
 				rs.close();
 				db.closeDB();
@@ -185,20 +164,16 @@ public class CoreFunctions {
 			else {
 				rs.close();
 				db.closeDB();
-				return "INSERTFAIL";
+				return "UPL:INSERTFAIL";
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
-
-		} finally {
 			try {
 				if (rs != null) rs.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e1) {}
 			if (db != null) 
 				db.closeDB();
+			return "UPL:ERROR";
 		}
-		
-		return "UNREACHABLE";
 	}
 }
