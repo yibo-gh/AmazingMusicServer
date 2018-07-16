@@ -39,7 +39,8 @@ public class ClientRunner {
 	
 	public static void fileGive() {
 		LinkedList list = new LinkedList();
-		FileInfo fileinfo = new FileInfo("DongYeun", "/Users/user/Desktop/fileReceiveServer.txt.txt", "111");
+		FileInfo fileinfo = new FileInfo("DongYeun", "/Users/user/Desktop/fileReceiveServer.txt.txt", 
+				"9affe991ad8667fe8217b2d2f1aa94b9");
 		list.add("upload");
 		list.add(fileinfo);
 		
