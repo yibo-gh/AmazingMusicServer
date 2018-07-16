@@ -11,7 +11,7 @@ public class Database {
 	Connection conn = null;
 	Statement stmt = null;
 	String id = "root";
-	String pw = "cofls8680*"; //"dl938271";
+	String pw = "dl938271"; //"dl938271";
 	String dbName;
 	
 	public Database(String dbName) {
