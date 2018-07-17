@@ -16,7 +16,6 @@ import SQLpackage.Database;
 
 
 public class FileCoreFunctions {
-private static final String dbName = "AmazingMusicDB";
    
    public static LinkedList upload (LinkedList ll) {
       
@@ -77,7 +76,7 @@ private static final String dbName = "AmazingMusicDB";
       File music = new File(path);
       
       try {
-         db = new Database("AmazingMusicDB");
+         db = new Database();
          
          System.out.println("select MD5 from waitingfile where MD5='" + flInfo.getMD5() + "'");
          rs = db.readDB("select MD5 from waitingfile where MD5='" + flInfo.getMD5() + "'");

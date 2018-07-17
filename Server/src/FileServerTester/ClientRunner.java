@@ -1,5 +1,6 @@
 package FileServerTester;
 
+import java.io.File;
 import java.io.InputStream;
 
 import FileServerTester2.BasicClient;
@@ -39,8 +40,8 @@ public class ClientRunner {
 	
 	public static void fileGive() {
 		LinkedList list = new LinkedList();
-		FileInfo fileinfo = new FileInfo("11111", "/Users/user/Desktop/fileReceiveServer.txt.txt", 
-				"9affe991ad8667fe8217b2d2f1aa94b9");
+		File f = new File("/Users/yiboguo/Desktop/Yoona.jpg");
+		FileInfo fileinfo = new FileInfo("11111", f.getAbsolutePath(), API.MD5Class.FileMD5Generator(f));
 		list.add("upload");
 		list.add(fileinfo);
 		

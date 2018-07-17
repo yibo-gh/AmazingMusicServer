@@ -29,7 +29,7 @@ public class CoreFunctions {
 		User user = (User) u;
 		
 		try {
-			db = new Database(dbName);
+			db = new Database();
 			
 			/*
 			 * Whether user has already registered. (in the case of using same email)
@@ -75,7 +75,7 @@ public class CoreFunctions {
 		User user = (User) u;
 		
 		try {
-			db = new Database(dbName);
+			db = new Database();
 			
 			/*
 			 * Must have already registered.
@@ -119,7 +119,7 @@ public class CoreFunctions {
 		FileInfo fInfo = (FileInfo) f;
 		
 		try {
-			db = new Database(dbName);
+			db = new Database();
 			
 			rs = db.readDB("select fileSerial from postfile where fileSerial='" + fInfo.getFileSerial() + "'");
 			if (rs.next()) {

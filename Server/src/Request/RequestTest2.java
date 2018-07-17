@@ -10,8 +10,8 @@ public class RequestTest2 {
 		System.out.println(Request.register("icho4@ucsc.edu", "cofls8680*"));
 		System.out.println(Request.login("icho4@ucsc.edu", "Wlgn0504"));
 		System.out.println(Request.login("icho4@ucsc.edu", "cofls8680*"));
-		System.out.println(Request.upload(Request.login("icho4@ucsc.edu", "cofls8680*"), "C:\\Users\\ÀÎ¿µ\\Desktop\\DailyScrum&Plan\\Plan15.7.18.txt"));
-		System.out.println(Request.upload(Request.login("icho4@ucsc.edu", "cofls8680*"), "C:\\Users\\ÀÎ¿µ\\Desktop\\DailyScrum&Plan\\Plan15.7.txt"));
+		System.out.println(Request.upload(Request.login("icho4@ucsc.edu", "cofls8680*"), "C:\\Users\\ï¿½Î¿ï¿½\\Desktop\\DailyScrum&Plan\\Plan15.7.18.txt"));
+		System.out.println(Request.upload(Request.login("icho4@ucsc.edu", "cofls8680*"), "C:\\Users\\ï¿½Î¿ï¿½\\Desktop\\DailyScrum&Plan\\Plan15.7.txt"));
 		*/
 		
 		String[] testCases = {"icho@ucsc.edu", "ciy405x@kaist.ac.kr", "me@gmail.com", 

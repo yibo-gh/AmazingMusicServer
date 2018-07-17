@@ -11,8 +11,8 @@ public class Database {
 	Connection conn;
 	SQL sql;
 	
-	public Database(String dbName) {
-		this.sql = new SQL(dbName);
+	public Database() {
+		this.sql = new SQL();
 		this.conn = sql.connect();
 	}
 	
@@ -22,6 +22,55 @@ public class Database {
 		else
 			return false;
 	}
+	
+//	public String initDB() {
+//		
+//		String result;
+//		String query;
+//		
+//		if (!isValidConnection()) {
+//			return "INVALIDCONNECTION";
+//		}
+////		
+////		query = "use amazingmusicdb;";
+////		result = updateDB(query);
+////		if (result != "UPS")
+////			return "USEFAIL";
+////		
+////		query = "CREATE TABLE `amazingmusicdb`.`user` (\n" + 
+////				"  `emailUsername` CHAR(255) NOT NULL,\n" + 
+////				"  `emailDomain` CHAR(255) NOT NULL,\n" + 
+////				"  `uid` CHAR(10) NOT NULL,\n" + 
+////				"  `pw` CHAR(32) NOT NULL,\n" + 
+////				"  PRIMARY KEY (`uid`),\n" + 
+////				"  UNIQUE INDEX `uid_UNIQUE` (`uid` ASC));";
+////		result = updateDB(query);
+////		if (result != "UPS")
+////			return "USEFAIL";
+////		
+////		query = "CREATE TABLE `amazingmusicdb`.`waitingFile` (\n" + 
+////				"  `MD5` CHAR(32) NOT NULL,\n" + 
+////				"  `fileSerial` CHAR(32) NOT NULL,\n" + 
+////				"  `uid` CHAR(10) NOT NULL,\n" + 
+////				"  `oriName` CHAR(255) NOT NULL,\n" + 
+////				"  UNIQUE INDEX `MD5_UNIQUE` (`MD5` ASC),\n" + 
+////				"  PRIMARY KEY (`MD5`));";
+////		result = updateDB(query);
+////		if (result != "UPS")
+////			return "USEFAIL";
+//		
+//		query = "CREATE TABLE `amazingmusicdb`.`postFile` (\n" + 
+//				"  `fileSerial` CHAR(32) NOT NULL,\n" + 
+//				"  `uid` CHAR(10) NOT NULL,\n" + 
+//				"  `oriName` CHAR(255) NOT NULL,\n" + 
+//				"  UNIQUE INDEX `fileSerial_UNIQUE` (`fileSerial` ASC),\n" + 
+//				"  PRIMARY KEY (`fileSerial`));";
+//		result = updateDB(query);
+//		if (result != "UPS")
+//			return "USEFAIL";
+//	
+//		return "INITSUCCEED";
+//	}
 	
 	public ResultSet readDB(String query) {
 		

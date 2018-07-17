@@ -8,11 +8,13 @@ public class SQL {
 
 	String id, pw, dbName; 
 	
-	public SQL(String dbName) {
-		this.id = "root";
-		this.pw = "cofls8680*"; //"dl938271";
-		this.dbName = dbName;
+	public SQL() {
+		this.id = "amaMusic";
+		this.pw = "loveCS115.";
+		this.dbName = "amazingmusicdb";
 	}
+	
+	
 	
 	Connection connect() {
 		String driver = "com.mysql.jdbc.Driver";
