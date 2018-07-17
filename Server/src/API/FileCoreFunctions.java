@@ -73,14 +73,11 @@ private static final String dbName = "AmazingMusicDB";
 		
 		try {
 			db = new Database("AmazingMusicDB");
-			db.connectDB();
 			
 			rs = db.readDB("select MD5 from waitingfile where MD5='" + flInfo.getMD5() + "'");
 			//System.out.println(rs);
 			if(rs.next()) {
 				System.out.println("there is not matching MD5 value file");
-				rs.close();
-				db.closeDB();
 			}
 			else {
 				String result = db.updateDB("delete from waitingfile where MD5 = '" + flInfo.getMD5() + "'");

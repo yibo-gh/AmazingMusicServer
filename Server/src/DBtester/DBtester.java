@@ -14,6 +14,16 @@ public class DBtester {
 		ResultSet rs = null;
 		
 		try {
+			rs = db.readDB(query);
+			if (rs != null) {
+				rs.next();
+				System.out.println(rs.getString(1));
+			}
+		} catch (SQLException e) {
+			System.out.println("Something wrong.");
+		}
+		
+/*		try {
 			db.connectDB();
 			rs = db.readDB(query);
 			if (rs != null) {
@@ -28,7 +38,7 @@ public class DBtester {
 				if (rs != null) rs.close();
 			} catch (SQLException e) {}
 			db.closeDB();
-		}
+		}*/
 	}
 
 }
