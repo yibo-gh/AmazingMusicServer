@@ -1,12 +1,9 @@
 package Object;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import API.MD5Class;
-import SQLpackage.Database;
 
 public class User implements java.io.Serializable {
 	
@@ -33,7 +30,7 @@ public class User implements java.io.Serializable {
 		
 		this.uid = MD5Class.MD5Generator(email).substring(0, 10);
 	}
-	
+/*	
 	private String generateUID(String email) { 
 		// need some modification, so that client cannot access the other DB tables, except userInfo table.
 		String tmp_domainCode, tmp_nameCode, tmp_uid;
@@ -46,7 +43,6 @@ public class User implements java.io.Serializable {
 		
 		try {
 			db = new Database("AmazingMusicDB");
-			db.connectDB();
 						
 			rs = db.readDB("select uid from domainCode where uid='" + tmp_uid + "' LIMIT 1");
 			while (true) {
@@ -80,7 +76,7 @@ public class User implements java.io.Serializable {
 				db.closeDB();
 			return "GENUIDERROR";	
 		}
-	}
+	}*/
 	/*
 	private String next(String s) {
 		**
@@ -94,7 +90,7 @@ public class User implements java.io.Serializable {
 			s = s.substring(0,i) + (s.charAt(i)+1) + s.substring(i+1,s.length());
 		}
 	}
-	*/
+	*//*
 	private String domainCode(String s) {
 		if (s.length() < 2)
 			return "INVALIDDOMAIN";
@@ -146,7 +142,7 @@ public class User implements java.io.Serializable {
 			return str.substring(lenStr-6,lenStr);
 		}
 	}
-	
+	*/
 	private static boolean isValidEmail(String email) {
 		
 		/**

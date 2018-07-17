@@ -18,7 +18,7 @@ public class RequestTest2 {
 				"me@company.co.uk", "inyoungh@naver.com", "Iam@g.com", 
 				"inyoung@navrr.cor", "inyoun@kai.ac.kr", "inyoun@k.ac.kr"};
 		for (int i=0; i < testCases.length; i++) {
-			System.out.println(Request.register(testCases[i], "c123"));
+			System.out.println(Request.login(testCases[i], "c1235"));
 		}
 	}
 

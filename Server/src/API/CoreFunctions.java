@@ -30,15 +30,12 @@ public class CoreFunctions {
 		
 		try {
 			db = new Database(dbName);
-			db.connectDB();
 			
 			/*
 			 * Whether user has already registered. (in the case of using same email)
 			 */
 			rs = db.readDB("select pw from userInfo where uid='"+user.getUID()+"'");
 			if (rs.next()) {
-				rs.close();
-				db.closeDB();
 				return "REG:USEREXISTS";
 			}
 			
@@ -49,22 +46,13 @@ public class CoreFunctions {
 			String result = db.updateDB("insert into userInfo (emailUserName, emailDomain, uid, pw) "
 								+ "values ('" + user.getName() + "', '" + user.getDomain() + "', '" + user.getUID() + "', '" + user.getUserPW() + "')");
 			if (result == "UPS") {
-				rs.close();
-				db.closeDB();
 				return "REG:SUCCEED";
 			}
 			else {
-				rs.close();
-				db.closeDB();
 				return "REG:INSERTFAIL";
 			}
 			
 		} catch (SQLException e) {
-			try {
-				if (rs != null) rs.close();
-			} catch (SQLException e1) {}
-			if (db != null) 
-				db.closeDB();
 			return "REG:ERROR";
 		}
 	}
@@ -88,21 +76,16 @@ public class CoreFunctions {
 		
 		try {
 			db = new Database(dbName);
-			db.connectDB();
 			
 			/*
 			 * Must have already registered.
 			 */
 			rs = db.readDB("select pw, uid from userInfo where emailUserName='"+user.getName()+"'"+" and emailDomain='"+user.getDomain()+"'");
 			if (!rs.next()) {
-				rs.close();
-				db.closeDB();
 				return "LOGIN:NOTREG";
 			}
 			
 			if (!rs.getString("pw").equals(user.getUserPW())) {
-				rs.close();
-				db.closeDB();
 				return "LOGIN:PWINCORRECT";
 			}
 			
@@ -110,17 +93,9 @@ public class CoreFunctions {
 			 * return UID: need to modified.
 			 */
 			String uid = rs.getString("uid");
-			
-			rs.close();
-			db.closeDB();
 			return uid;
 					
 		} catch (SQLException e) {
-			try {
-				if (rs != null) rs.close();
-			} catch (SQLException e1) {}
-			if (db != null) 
-				db.closeDB();
 			return "LOGIN:ERROR";
 		}
 	}
@@ -145,34 +120,22 @@ public class CoreFunctions {
 		
 		try {
 			db = new Database(dbName);
-			db.connectDB();
 			
 			rs = db.readDB("select fileSerial from postfile where fileSerial='" + fInfo.getFileSerial() + "'");
 			if (rs.next()) {
-				rs.close();
-				db.closeDB();
 				return "UPL:FILEEXISTS";
 			}
 			
 			String result = db.updateDB("insert into waitingfile (MD5, fileSerial, uid, oriName) "
 					+"values ('"+fInfo.getMD5()+"', '"+fInfo.getFileSerial()+"', '"+fInfo.getUID()+"', '"+fInfo.getOriName()+"')");
 			if (result == "UPS") {
-				rs.close();
-				db.closeDB();
 				return "UPS";
 			}
 			else {
-				rs.close();
-				db.closeDB();
 				return "UPL:INSERTFAIL";
 			}
 
 		} catch (SQLException e) {
-			try {
-				if (rs != null) rs.close();
-			} catch (SQLException e1) {}
-			if (db != null) 
-				db.closeDB();
 			return "UPL:ERROR";
 		}
 	}

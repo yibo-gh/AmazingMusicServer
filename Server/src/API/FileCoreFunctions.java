@@ -18,6 +18,7 @@ import SQLpackage.Database;
 public class FileCoreFunctions {
 private static final String dbName = "AmazingMusicDB";
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 	public static LinkedList upload (LinkedList ll) {
 		
@@ -132,6 +133,8 @@ private static final String dbName = "AmazingMusicDB";
 		
 	
 =======
+=======
+>>>>>>> bbc570346cdff70fc59af274362de2b0e71093b7
    
    public static LinkedList upload (LinkedList ll) {
       
@@ -243,6 +246,9 @@ private static final String dbName = "AmazingMusicDB";
    }
       
    
+<<<<<<< HEAD
+>>>>>>> bbc570346cdff70fc59af274362de2b0e71093b7
+=======
 >>>>>>> bbc570346cdff70fc59af274362de2b0e71093b7
 
 }
