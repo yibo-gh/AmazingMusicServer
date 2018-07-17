@@ -42,15 +42,17 @@ public class FileGiveClient {
 				dtaOutStream.flush();
 				
 				System.out.println("File "+Filename+" sent to Server.");
+				
+				objInStream = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
+				result = objInStream.readObject();
+				
+				System.out.println(result);
 			}
 			else {
 				System.out.println("There isn't a file");
 			}
 			
-			
-			
-			objInStream = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
-			result = objInStream.readObject();
+			//result = objInStream.readObject();
 			
 		}catch(Exception e) {
 			e.printStackTrace();

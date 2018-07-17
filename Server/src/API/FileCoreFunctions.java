@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.security.DigestInputStream;
 import java.io.InputStream ;
 import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 import Object.FileInfo;
 import Object.LinkedList;
@@ -62,7 +64,7 @@ private static final String dbName = "AmazingMusicDB";
 		return "downloaded";
 	}
 	
-	public static void validate(FileInfo flInfo) {
+	public static String validate(FileInfo flInfo) {
 		String path = "temporary" + File.separatorChar + flInfo.getFileSerial();
 		System.out.println(path);
 		String md5Value = MD5Class.FileMD5Generator(path);
@@ -70,28 +72,58 @@ private static final String dbName = "AmazingMusicDB";
 		
 		Database db = null;
 		ResultSet rs = null;
+		String output = "";
+		File music = new File(path);
 		
 		try {
 			db = new Database("AmazingMusicDB");
 			db.connectDB();
 			
+			System.out.println("select MD5 from waitingfile where MD5='" + flInfo.getMD5() + "'");
 			rs = db.readDB("select MD5 from waitingfile where MD5='" + flInfo.getMD5() + "'");
 			//System.out.println(rs);
-			if(rs.next()) {
+			if(!rs.next()) {
 				System.out.println("there is not matching MD5 value file");
 				rs.close();
 				db.closeDB();
+				
+				if(music.delete())
+		        {
+		            System.out.println("File deleted from temp successfully");
+		        }
+		        else
+		        {
+		            System.out.println("Failed to delete the file from temp");
+		        }
+				output = "VALIDATE FAIL";
+				return output;
 			}
 			else {
 				String result = db.updateDB("delete from waitingfile where MD5 = '" + flInfo.getMD5() + "'");
 				System.out.println(result);
+				String inPostFile = "insert into postfile (fileSerial, uid, oriName) "
+						+ "values ('" + flInfo.getFileSerial() + "', '" + flInfo.getUID() + "', '"
+						+ flInfo.getOriName() + "')";
+				System.out.println(inPostFile);
+				result = db.updateDB(inPostFile);
+				
+				File uidDir = new File(flInfo.getUID());
+				if(!uidDir.exists()) {
+					uidDir.mkdir();
+				}
+				
+				String newPath = flInfo.getUID() + File.separatorChar + flInfo.getFileSerial();
+				System.out.println(newPath);
+			
+				Files.move(Paths.get(path), Paths.get(newPath), StandardCopyOption.REPLACE_EXISTING);
+				output = "VALIDATE SUCCESS";
+				
+				return output;
 			}
-			
-			
-			
 			
 		}catch (Exception e) {
 			e.printStackTrace();
+			return output;
 		}
 		
 	}
