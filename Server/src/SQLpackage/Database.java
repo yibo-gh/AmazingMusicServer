@@ -29,7 +29,7 @@ public class Database {
 		 * Output: None
 		 */
 		
-		String driver = "com.mysql.cj.jdbc.Driver";
+		String driver = "com.mysql.jdbc.Driver";
 		String url = "jdbc:mysql://127.0.0.1:3306/" + this.dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false"; // "https://67.180.244.170:3306"
 		
 		try {
