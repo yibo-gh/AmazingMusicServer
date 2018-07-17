@@ -41,7 +41,7 @@ public class CreateFileServerThread extends Thread {
 		try {
 			ObjectInputStream objInStream = new ObjectInputStream(this.clientSocket.getInputStream()); // do I have to use bufferedinputstream?
 			ObjectOutputStream objOutStream = new ObjectOutputStream(this.clientSocket.getOutputStream());
-			
+			String signal = "";
       /*
 			 *  receive client request from the stream, 
 			 *  give the information to the decoder,
@@ -69,21 +69,20 @@ public class CreateFileServerThread extends Thread {
 					fileOutStream.write(buffer, 0, size);
 					if(size <= 1024) {
 						System.out.println("break");
+						fileOutStream.close();
 						break;
 					}
 				}
 				
 				System.out.println("File sent to fileServer from client.");
-				FileCoreFunctions.validate(flInfo);
+				signal = FileCoreFunctions.validate(flInfo);
 			}
 			else{
 				System.out.println("bb");
+				signal = " ";
 			}
 			System.out.println("2");
-			objOutStream.writeObject(sign);
-			objOutStream.flush();
-			
-			objOutStream.writeObject("done!"); // Note: need to change later
+			objOutStream.writeObject(signal);
 			objOutStream.flush();
 			
 			try { if (objInStream != null) objInStream.close(); } catch (IOException e) {};
