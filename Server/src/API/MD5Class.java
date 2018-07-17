@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.io.FileInputStream;
+import java.io.File;
 
 public class MD5Class {
 	
@@ -29,7 +30,7 @@ public class MD5Class {
 		}
 		return null;
 	}
-	public static String FileMD5Generator (String filename) {
+	public static String FileMD5Generator (File filename) {
 	    	FileInputStream fis = null;
 	    	MessageDigest digest = null;
 	    	StringBuilder sb = null;
@@ -63,10 +64,9 @@ public class MD5Class {
 		    md5 = sb.toString();
 		     
 		    //return complete hash
-		   return sb.toString();
+		   return md5;
 	    }catch(Exception e) {
 	    	e.printStackTrace();
-	    }finally {
 	    	return md5;
 	    }
 	}

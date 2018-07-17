@@ -81,7 +81,6 @@ public class CreateFileServerThread extends Thread {
 				System.out.println("bb");
 				signal = " ";
 			}
-			System.out.println("2");
 			objOutStream.writeObject(signal);
 			objOutStream.flush();
 			
