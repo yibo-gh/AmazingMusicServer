@@ -17,7 +17,7 @@ public class SysTest {
 		 * 3. Wrong pw test				Expected result: LOGIN:PWINCORRECT
 		 * 4. Registered or not test	Expected result: LOGIN:NOTREG
 		 */
-		/*System.out.println("Invalid email test");
+		System.out.println("Invalid email test");
 		v(Request.register("insd..sdf@cosmf.com", "sdf").equals("INVALIDEMAIL"));
 		v(Request.register("N#@LKsdlfk.com", "sdf").equals("INVALIDEMAIL"));
 		v(Request.register("ciy405*x@kaist.co.kr", "sdf").equals("INVALIDEMAIL"));
@@ -36,7 +36,7 @@ public class SysTest {
 		v(Request.register("ciy@naver.co.kr", "sdfsd").equals("REG:USEREXISTS"));
 		v(Request.register("ci2231y@naver.co.kr", "sdf132").equals("REG:USEREXISTS"));
 		v(Request.register("ci33y@naver.com", "12312sdlf").equals("REG:USEREXISTS"));
-		
+		/*
 		System.out.println("Wrong pw test");
 		v(Request.login("ciy@naver.co.kr", "sdfs1d").equals("LOGIN:PWINCORRECT"));
 		v(Request.login("ci2231y@naver.co.kr", "sdf132").equals("LOGIN:PWINCORRECT"));
@@ -55,11 +55,11 @@ public class SysTest {
 		 * 3. Music uploading
 		 */
 		//Request.register("functest@ucsc.edu", "functest");
-		String uid = Request.login("functest@ucsc.edu", "functest");
+		/*String uid = Request.login("functest@ucsc.edu", "functest");
 		if (uid.contains("LOGIN:"))
 			System.out.println("FAIL");
 		else
-			System.out.println(Request.upload(uid, "C:\\Users\\인영\\Dropbox\\Music\\차분한, 조용한, 담담한 랩\\[MV] Chancellor(챈슬러) _ Surrender (Feat. Lyn(린)).mp3"));
+			System.out.println(Request.upload(uid, "C:\\Users\\인영\\Dropbox\\Music\\차분한, 조용한, 담담한 랩\\[MV] Chancellor(챈슬러) _ Surrender (Feat. Lyn(린)).mp3"));*/
 		
 		/*
 		 * System Functionality Robustness Tests
@@ -67,11 +67,11 @@ public class SysTest {
 		 * 1. Sequential uploading
 		 * 2. Parallel uploading
 		 */
-		String uid2 = Request.login("functest@ucsc.edu", "functest");
+		/*String uid2 = Request.login("functest@ucsc.edu", "functest");
 		if (uid2.contains("LOGIN:"))
 			System.out.println("FAIL");
 		else
-			v(Request.upload(uid2, "C:\\Users\\인영\\Dropbox\\Music\\[MV] Chancellor(챈슬러) _ Surrender (Feat. Lyn(린)).mp3").equals("REQ:FILENOTEXIST"));		
+			v(Request.upload(uid2, "C:\\Users\\인영\\Dropbox\\Music\\[MV] Chancellor(챈슬러) _ Surrender (Feat. Lyn(린)).mp3").equals("REQ:FILENOTEXIST"));	*/	
 	}
 	
 	private static void v(boolean statement) {
