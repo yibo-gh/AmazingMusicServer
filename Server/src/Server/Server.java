@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import SQLpackage.Database;
+
 public class Server {
 	
 	public Server() {
@@ -20,6 +22,9 @@ public class Server {
 		try {
 			serverSocket = new ServerSocket(18701);
 			System.out.println("the General Purpose Server started!");
+			Database db = new Database();
+			System.out.println("DB initialization completed!");
+			db.initDB();
 			// Server, Keep working!
 			while (true) {
 				clientSocket = serverSocket.accept();

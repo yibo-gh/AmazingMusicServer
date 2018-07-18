@@ -40,7 +40,7 @@ public class CoreFunctions {
 			/*
 			 * Whether user has already registered. (in the case of using same email)
 			 */
-			rs = db.readDB("select pw from userInfo where uid='"+user.getUID()+"'");
+			rs = db.readDB("select pw from `amazingmusicdb`.`userInfo` where uid='"+user.getUID()+"'");
 			if (rs.next()) {
 				return "REG:USEREXISTS";
 			}
@@ -49,7 +49,7 @@ public class CoreFunctions {
 			 * Insert new user information into userInfo table in DB.
 			 * File should be match with proper uid (kind of tag).
 			 */
-			String result = db.updateDB("insert into userInfo (emailUserName, emailDomain, uid, pw) "
+			String result = db.updateDB("insert into `amazingmusicdb`.`userInfo` (emailUserName, emailDomain, uid, pw) "
 								+ "values ('" + user.getName() + "', '" + user.getDomain() + "', '" + user.getUID() + "', '" + user.getUserPW() + "')");
 			if (result == "UPS") {
 				return "UPS";
@@ -91,7 +91,7 @@ public class CoreFunctions {
 			/*
 			 * The user must already been registered.
 			 */
-			rs = db.readDB("select pw, uid from userInfo where emailUserName='"+user.getName()+"'"+" and emailDomain='"+user.getDomain()+"'");
+			rs = db.readDB("select pw, uid from `amazingmusicdb`.`userInfo` where emailUserName='"+user.getName()+"'"+" and emailDomain='"+user.getDomain()+"'");
 			if (!rs.next()) {
 				return "LOGIN:NOTREG";
 			}
@@ -135,12 +135,12 @@ public class CoreFunctions {
 		try {
 			db = new Database();
 			
-			rs = db.readDB("select fileSerial from postfile where fileSerial='" + fInfo.getFileSerial() + "'");
+			rs = db.readDB("select fileSerial from `amazingmusicdb`.`postfile` where fileSerial='" + fInfo.getFileSerial() + "'");
 			if (rs.next()) {
 				return "UPL:FILEEXISTS";
 			}
 			
-			String result = db.updateDB("insert into waitingfile (MD5, fileSerial, uid, oriName) "
+			String result = db.updateDB("insert into `amazingmusicdb`.`waitingfile` (MD5, fileSerial, uid, oriName) "
 					+"values ('"+fInfo.getMD5()+"', '"+fInfo.getFileSerial()+"', '"+fInfo.getUID()+"', '"+fInfo.getOriName()+"')");
 			if (result == "UPS") {
 				return "UPS";

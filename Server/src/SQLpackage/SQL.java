@@ -23,8 +23,7 @@ public class SQL {
 		 */
 		
 		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://localhost:3306/"
-				+ this.dbName + "?verifyServerCertificate=true&useSSL=false"; 
+		String url = "jdbc:mysql://localhost:3306/" + "?verifyServerCertificate=true&useSSL=false"; 
 		Connection conn;
 		
 		try {

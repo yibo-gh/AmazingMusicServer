@@ -36,16 +36,16 @@ public class SysTest {
 		v(Request.register("ciy@naver.co.kr", "sdfsd").equals("REG:USEREXISTS"));
 		v(Request.register("ci2231y@naver.co.kr", "sdf132").equals("REG:USEREXISTS"));
 		v(Request.register("ci33y@naver.com", "12312sdlf").equals("REG:USEREXISTS"));
-		/*
+		
 		System.out.println("Wrong pw test");
 		v(Request.login("ciy@naver.co.kr", "sdfs1d").equals("LOGIN:PWINCORRECT"));
-		v(Request.login("ci2231y@naver.co.kr", "sdf132").equals("LOGIN:PWINCORRECT"));
-		v(Request.login("ci33y@naver.com", "12312sdlf").equals("LOGIN:PWINCORRECT"));
+		v(Request.login("ci2231y@naver.co.kr", "sdfd132").equals("LOGIN:PWINCORRECT"));
+		v(Request.login("ci33y@naver.com", "12312s2dlf").equals("LOGIN:PWINCORRECT"));
 		
 		System.out.println("Not registered yet");
 		v(Request.login("ciy2@naver.co.kr", "sdfs1d").equals("LOGIN:NOTREG"));
 		v(Request.login("ci22331y@naver.co.kr", "sdf132").equals("LOGIN:NOTREG"));
-		v(Request.login("ci323y@naver.com", "12312sdlf").equals("LOGIN:NOTREG"));*/
+		v(Request.login("ci323y@naver.com", "12312sdlf").equals("LOGIN:NOTREG"));
 		
 		
 		/*
