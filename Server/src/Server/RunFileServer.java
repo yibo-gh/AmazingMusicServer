@@ -9,6 +9,6 @@ public class RunFileServer {
 		 * Output: None
 		 */
 			
-		new RealFileServer();
+		new FileServer();
 	}
 }

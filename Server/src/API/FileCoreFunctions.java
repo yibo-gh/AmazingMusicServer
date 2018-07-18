@@ -86,12 +86,12 @@ public class FileCoreFunctions {
 		
 		try {
 			db = new Database();         
-			System.out.println("select MD5 from waitingfile where MD5='" + flInfo.getMD5() + "'");
+			System.out.println("select MD5 from `amazingmusicdb`.`waitingfile` where MD5='" + flInfo.getMD5() + "'");
 			
 			/*
 			 * read MD5 value in the Database 'waiting file'
 			 */
-			rs = db.readDB("select MD5 from waitingfile where MD5='" + flInfo.getMD5() + "'");
+			rs = db.readDB("select MD5 from `amazingmusicdb`.`waitingfile` where MD5='" + flInfo.getMD5() + "'");
 			
 			
 			/*
@@ -121,13 +121,13 @@ public class FileCoreFunctions {
 				/*
 				 * delete information in DB waitingfile
 				 */
-				String result = db.updateDB("delete from waitingfile where MD5 = '" + flInfo.getMD5() + "'");
+				String result = db.updateDB("delete from `amazingmusicdb`.`waitingfile` where MD5 = '" + flInfo.getMD5() + "'");
 				System.out.println(result);
 				
 				/*
 				 * insert information corresponding to file to DB postfile
 				 */
-				String inPostFile = "insert into postfile (fileSerial, uid, oriName) "
+				String inPostFile = "insert into `amazingmusicdb`.`postfile` (fileSerial, uid, oriName) "
 						+ "values ('" + flInfo.getFileSerial() + "', '" + flInfo.getUID() + "', '"
 						+ flInfo.getOriName() + "')";
 				System.out.println(inPostFile);

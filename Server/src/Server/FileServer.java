@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class RealFileServer {
+public class FileServer {
 	
-	public RealFileServer() {
+	public FileServer() {
 		/*
 		 * Constructor for Server class.
 		 * Serversocket stays to listen a client's request.
