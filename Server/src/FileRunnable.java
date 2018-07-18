@@ -8,7 +8,7 @@ public class FileRunnable {
 		 * Output: nothing
 		 */
 		
-		FileCoreFunctionTester.FileTesterRun.main(null); //F.S.
+		Server.RunFileServer.main(null); //F.S.
 		
 	}
 

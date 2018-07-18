@@ -23,7 +23,7 @@ public class CreateFileServerThread extends Thread {
 	public CreateFileServerThread(Socket s) {
 		
 		/*
-		 * Constructor for CreateServerThread. Start thread execution. 
+		 * Constructor for CreateFileServerThread. Start thread execution. 
 		 * Two threads are running concurrently. 
 		 * Input Requirement: a socket which is connected with a client
 		 */
@@ -44,9 +44,7 @@ public class CreateFileServerThread extends Thread {
 		 */
 		
 		try {
-			ObjectInputStream objInStream = new ObjectInputStream(this.clientSocket.getInputStream()); // do I have to
-																										// use
-																										// bufferedinputstream?
+			ObjectInputStream objInStream = new ObjectInputStream(this.clientSocket.getInputStream());
 			ObjectOutputStream objOutStream = new ObjectOutputStream(this.clientSocket.getOutputStream());
 			String signal = "";
 			
@@ -57,11 +55,15 @@ public class CreateFileServerThread extends Thread {
 			 *  and sent the result to client
 			 */
 			Object userRequest = objInStream.readObject();
-			LinkedList sign = (LinkedList) FileServerDecoder.firewall(userRequest); // check if userRequest is
-																					// linkedlist in firewall
+			LinkedList sign = (LinkedList) FileServerDecoder.firewall(userRequest); // check if userRequest is linkedlist in firewall
 			System.out.println(sign.getClass());
 			System.out.println(sign.head.getInfo());
-
+			
+			/*
+			 * if sign.head is "OK" that means oriName of file is not null. then start getting file from client.
+			 * first keep music file into temporary file. then validate the file if the temporary file's MD5 is correct with 
+			 * DB waitingfile's MD5 value.
+			 */
 			if (sign.head.getInfo() == "OK") {
 				System.out.println("Now client sends files");
 				FileInfo flInfo = (FileInfo) sign.end.getInfo();
@@ -71,7 +73,10 @@ public class CreateFileServerThread extends Thread {
 				DataInputStream dtaInStream = new DataInputStream(this.clientSocket.getInputStream());
 				byte[] buffer = new byte[1024];
 				int size = 0;
-
+				
+				/*
+				 * file data is getting in to the file.
+				 */
 				while (true) {
 					size = dtaInStream.read(buffer, 0, buffer.length);
 					System.out.println(size);
@@ -83,11 +88,19 @@ public class CreateFileServerThread extends Thread {
 					}
 				}
 				System.out.println("File sent to fileServer from client.");
+				
+				/*
+				 * compare the file's MD5 value that client give with DB waiting file.
+				 */
 				signal = FileCoreFunctions.validate(flInfo);
-			} else {
+			} 
+			else {
 				System.out.println("Client can't send file because there is no file name");
 				signal = " ";
 			}
+			/*
+			 * give some string to client
+			 */
 			objOutStream.writeObject(signal);
 			objOutStream.flush();
 

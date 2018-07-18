@@ -8,12 +8,12 @@ import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import Client.FileGiveClient;
 import Client.SocketClient;
-import FileServerTester2.FileGiveClient;
 import Object.FileInfo;
 import Object.LinkedList;
 import Object.User;
-import API.MD5Class;
+import Util.MD5Class;
 
 public class Request {
 	

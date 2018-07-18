@@ -1,8 +1,6 @@
-package FileCoreFunctionTester;
+package Server;
 
-import Server.RealFileServer;
-
-public class FileTesterRun {
+public class RunFileServer {
 	public static void main(String args[]) {
 		
 		/**

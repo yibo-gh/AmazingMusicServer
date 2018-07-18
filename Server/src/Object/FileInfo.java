@@ -1,6 +1,6 @@
 package Object;
 
-import API.MD5Class;
+import Util.MD5Class;
 
 public class FileInfo implements java.io.Serializable {
    

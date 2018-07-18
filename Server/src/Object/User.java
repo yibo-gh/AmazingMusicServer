@@ -3,7 +3,7 @@ package Object;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import API.MD5Class;
+import Util.MD5Class;
 
 public class User implements java.io.Serializable {
 	

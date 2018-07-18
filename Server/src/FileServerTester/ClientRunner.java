@@ -2,8 +2,7 @@ package FileServerTester;
 
 import java.io.InputStream;
 
-import FileServerTester2.BasicClient;
-import FileServerTester2.FileGiveClient;
+import Client.FileGiveClient;
 import Object.FileInfo;
 import Object.LinkedList;
 
@@ -34,7 +33,7 @@ public class ClientRunner {
       list.add("upload");
       list.add(fileinfo);
       
-      BasicClient.basicRequest(list, "");
+      //BasicClient.basicRequest(list, "");
    }
    
    public static void fileGive() {

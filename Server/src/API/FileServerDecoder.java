@@ -8,7 +8,7 @@ public class FileServerDecoder {
 	public static Object firewall(Object o) {
 
 		/**
-		 * Purpose: firewwell(Object o) has 3 ways to block the illegal variable 
+		 * Purpose: firewwall(Object o) has 3 ways to block the illegal variable 
 		 * 			1. Verify the input object is the class of LinkedList 
 		 * 			2. Verify the object is a string 
 		 * 			3. Verify the object is a string which its length is larger than 0 and
