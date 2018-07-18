@@ -13,6 +13,7 @@ import Object.FileInfo;
 import Object.LinkedList;
 import Object.User;
 import SQLpackage.Database;
+import Util.MD5Class;
 
 public class FileCoreFunctions {
 	
