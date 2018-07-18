@@ -19,6 +19,7 @@ public class Server {
 		
 		try {
 			serverSocket = new ServerSocket(18701);
+			System.out.println("the General Purpose Server started!");
 			// Server, Keep working!
 			while (true) {
 				clientSocket = serverSocket.accept();

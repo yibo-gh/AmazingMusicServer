@@ -18,8 +18,8 @@ public class RealFileServer {
 		Socket clientSocket;
 		
 		try {
-			System.out.println("the fileServer started!");
 			serverSocket = new ServerSocket(18702);
+			System.out.println("the File Server started!");
 			// Server, Keep working!
 			while (true) {
 				clientSocket = serverSocket.accept();
