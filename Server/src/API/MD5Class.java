@@ -40,9 +40,9 @@ public class MD5Class {
 	public static String FileMD5Generator(File file) {
 		
 		/**
-		 * Purpose: File -> random-looking hash value
+		 * Purpose: File -> random-looking MD5 value
 		 * Input Requirement: File object
-		 * Output: hash value
+		 * Output: MD5 value
 		 */
 		
 		FileInputStream fis = null;
@@ -50,33 +50,41 @@ public class MD5Class {
 		StringBuilder sb = null;
 		String md5 = null;
 		try {
-			// Get file input stream for reading the file content
+			/*
+			 * Get file input stream for reading the file content
+			 * then create byte array to read data in chunks
+			 */
 			fis = new FileInputStream(file);
 			digest = MessageDigest.getInstance("MD5");
-			// Create byte array to read data in chunks
 			byte[] byteArray = new byte[1024];
 			int bytesCount = 0;
 
-			// Read file data and update in message digest
+			/*
+			 * Read file data and update in message digest
+			 */
 			while ((bytesCount = fis.read(byteArray)) != -1) {
 				digest.update(byteArray, 0, bytesCount);
 			}
-
-			// close the stream; We don't need it now.
 			fis.close();
 
-			// Get the hash's bytes
+			/*
+			 * Get the hash's bytes
+			 */
 			byte[] bytes = digest.digest();
 
-			// This bytes[] has bytes in decimal format;
-			// Convert it to hexadecimal format
+			/*
+			 *  This bytes[] has bytes in decimal format
+			 *  Convert it to hexadecimal format
+			 */
 			sb = new StringBuilder();
 			for (int i = 0; i < bytes.length; i++) {
 				sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
 			}
 			md5 = sb.toString();
 
-			// return complete hash
+			/*
+			 * return complete MD5 value
+			 */
 			return md5;
 		} catch (Exception e) {
 			e.printStackTrace();
