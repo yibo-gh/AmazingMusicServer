@@ -1,4 +1,4 @@
-package FileServerTester2;
+package Client;
 
 import java.net.Socket;
 import java.io.*;
