@@ -15,7 +15,7 @@ public class BasicClient {
 		Object  result = null;
 		
 		try {
-			socket = new Socket("127.0.0.1", 18702);
+			socket = new Socket("localhost", 18702);
 			
 			objOutStream = new ObjectOutputStream(socket.getOutputStream());
 			objOutStream.writeObject(list);

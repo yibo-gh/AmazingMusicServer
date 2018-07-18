@@ -4,7 +4,10 @@ import Object.LinkedList;
 import Object.Node;
 
 public class DecoderTest {
-		
+	
+		/*
+		 * This test code may be no longer working.
+		 */
 		public static void main (String[] args) {
 			DecoderTest();
 		}

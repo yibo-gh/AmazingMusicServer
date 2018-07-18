@@ -9,14 +9,19 @@ public class SQL {
 	String id, pw, dbName; 
 	
 	public SQL() {
-		this.id = "amaMusic";
-		this.pw = "loveCS115.";
+		this.id = "root"; //"amaMusic";
+		this.pw = "cofls8680*"; //"loveCS115.";
 		this.dbName = "amazingmusicdb";
 	}
 	
-	
-	
 	Connection connect() {
+
+		/**
+		 * Purpose: Connect to DB server (need to run connect() after manually login into SQL server)
+		 * Input Requirement: nothing
+		 * Output: nothing
+		 */
+		
 		String driver = "com.mysql.jdbc.Driver";
 		String url = "jdbc:mysql://localhost:3306/"
 				+ this.dbName + "?verifyServerCertificate=true&useSSL=false"; 
@@ -33,7 +38,6 @@ public class SQL {
 			/*
 			 * 1. forName() - SQL-java driver loading for using SQL in Java language
 			 * 2. getConnection() - connect to SQL server
-			 * 3. createStatement() - this "truck" will deliver requests (or queries)
 			 */
 			System.out.print("Driver loading... ");
 			Class.forName(driver);

@@ -1,6 +1,6 @@
 package Testers;
 
-public class GeneralPurpseTester {
+public class GeneralPurposeTester {
 
 	public static void main (String args[]) {
 		int randomInt = (int) (Math.random() * 100);

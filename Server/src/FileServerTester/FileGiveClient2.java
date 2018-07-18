@@ -21,13 +21,13 @@ public class FileGiveClient2 {
 		File file = null;
 		
 		try {
-			socket = new Socket("127.0.0.1", 18702); // Note: need to change later. need to decide IP address. 
+			socket = new Socket("localhost", 18702); // Note: need to change later. need to decide IP address. 
 			
 			file = new File(filename);
 			if(file.exists()) {
 				
 				LinkedList list = new LinkedList();
-				FileInfo fileinfo = new FileInfo("DongYeun", filename, "111");
+				FileInfo fileinfo = new FileInfo("DongYeun", filename, "111", "txt");
 				list.add("upload");
 				list.add(fileinfo);
 				

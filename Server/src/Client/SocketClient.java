@@ -9,6 +9,7 @@ import java.net.Socket;
 import Object.LinkedList;
 
 public class SocketClient {
+	
 	/*
 	 * Client machine send a request by a linkedlist
 	 * which contains several information.
@@ -20,14 +21,17 @@ public class SocketClient {
 	 * 4. Receive an object from server through and return it
 	 *    ObjectInputStream
 	 */
+	
 	@SuppressWarnings("finally")
 	public static Object request(LinkedList list) {
+		
 		/**
 		 * Purpose: Client send a request by a linkedlist which contains several information
 		 * 			For example, the first node is about the type of the request. (register, login, logout, ...)
 		 * Input Requirement: Expect a linkedlist which contains several information about request
 		 * Output: Return an object which server sent
 		 */
+		
 		Socket socket = null;
 		ObjectOutputStream objOutStream = null;
 		ObjectInputStream objInStream = null;

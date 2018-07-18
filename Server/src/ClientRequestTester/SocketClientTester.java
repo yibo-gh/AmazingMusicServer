@@ -40,7 +40,7 @@ public class SocketClientTester {
 			 * Next, server will sent an object by the result of server works.
 			 * Return the object.
 			 */
-			socket = new Socket("127.0.0.1", 18701); // need to decide IP address.
+			socket = new Socket("localhost", 18701); // need to decide IP address.
 			
 			objOutStream = new ObjectOutputStream(socket.getOutputStream());
 			objOutStream.writeObject(list);

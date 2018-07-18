@@ -1,6 +1,5 @@
 package FileServerTester;
 
-import java.io.File;
 import java.io.InputStream;
 
 import FileServerTester2.BasicClient;
@@ -12,40 +11,40 @@ import Object.LinkedList;
 
 
 public class ClientRunner {
-	public static void main(String args[]) throws Exception {
-	
-		System.out.println("1. basic client");
-		
+   public static void main(String args[]) throws Exception {
+   
+      System.out.println("1. basic client");
+      
         int selection = 2;
         
         switch(selection) {
         case 1:
-        	System.out.println("basic client selected");
-        	basic();
-        	break;
+           System.out.println("basic client selected");
+           basic();
+           break;
         case 2:
-        	System.out.println("file give client selected");
-        	fileGive();
+           System.out.println("file give client selected");
+           fileGive();
         }
-	}
-	
-	public static void basic() {
-		LinkedList list = new LinkedList();
-		FileInfo fileinfo = new FileInfo("DongYeun", "", "111");
-		list.add("upload");
-		list.add(fileinfo);
-		
-		BasicClient.basicRequest(list, "");
-	}
-	
-	public static void fileGive() {
-		LinkedList list = new LinkedList();
-		File f = new File("/Users/yiboguo/Desktop/Yoona.jpg");
-		FileInfo fileinfo = new FileInfo("11111", f.getAbsolutePath(), API.MD5Class.FileMD5Generator(f));
-		list.add("upload");
-		list.add(fileinfo);
-		
-		FileGiveClient.fileGiveRequest(list, "/Users/user/Desktop/fileReceiveServer.txt.txt");
-	}
+   }
+   
+   public static void basic() {
+      LinkedList list = new LinkedList();
+      FileInfo fileinfo = new FileInfo("DongYeun", "", "111", ".txt");
+      list.add("upload");
+      list.add(fileinfo);
+      
+      BasicClient.basicRequest(list, "");
+   }
+   
+   public static void fileGive() {
+      LinkedList list = new LinkedList();
+      FileInfo fileinfo = new FileInfo("11111", "/Users/user/Desktop/fileReceiveServer.txt.txt", 
+            "9affe991ad8667fe8217b2d2f1aa94b9", ".txt");
+      list.add("upload");
+      list.add(fileinfo);
+      
+      FileGiveClient.fileGiveRequest(list, "/Users/user/Desktop/fileReceiveServer.txt.txt");
+   }
 
 }

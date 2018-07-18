@@ -8,15 +8,15 @@ public class Decoder {
 	public static Object firewall(Object o) {
 		
 		/**
-		 * Purpose: firewwall(Object o) has 3 ways to block the illegal variable
-		 * 1. Verify the input object is the class of LinkedList
-		 * 2. Verify the object is a String
-		 * 3. Verify the object is a string which its length is larger than 0 and it
-		 * only contain letters or numbers.
-		 * 4. Verify the length of input LinkedList is longer than or equal with 2: at least one header and one information for the request
-		 * Input Requirement:This function requires a Object as parameter to run.
+		 * Purpose: farewell(Object o) has 3 ways to block the illegal variable
+		 * 			1. Verify the input object is the class of LinkedList
+		 * 			2. Verify the object is a String
+		 * 			3. Verify the object is a string which its length is larger than 0 and it
+		 * 				only contain letters or numbers.
+		 * 			4. Verify the length of input LinkedList is longer than or equal with 2: at least one header and one information for the request
+		 * Input Requirement: This function requires a Object as parameter to run.
 		 * Return: If this function returns "0x1A01","0x1A02","0x1A03", it means that input object is illegal
-		 * if this function return to getCommand(ll), it means that the input object is legal.
+		 * 		   If this function returns getCommand(ll), it means that the input object is legal.
 		 */
 		
 		if (!o.getClass().equals(new LinkedList().getClass())) {
@@ -37,7 +37,7 @@ public class Decoder {
 		}
 		
 		if (ll.getLength() < 2 ) {
-			return "0x1A03"; // need to modify & unify Error Codes
+			return "0x1A03";
 		}
 		
 		return getCommand(ll);
@@ -61,10 +61,7 @@ public class Decoder {
 			case "reg": return CoreFunctions.register(rest(ll));
 			case "lgn": return CoreFunctions.login(rest(ll));
 			case "upl": return CoreFunctions.upload(rest(ll));
-			case "dnl": return ""; // Note: need modification
-			/*
-			 * We need to add some lines after decide APIs
-			 */
+			//case "dnl": return ""; // Note: need modification
 			default: return "0x1A04";
 		}
 	}
@@ -74,7 +71,7 @@ public class Decoder {
 		/**
 		 * Purpose: obtain the rest(all but head node) of a linkedlist
 		 * Input Requirement: linkedlist
-		 * Output: the rest linkedlist.
+		 * Output: the rest of linkedlist.
 		 */
 		
 		ll.delete(0);
@@ -84,7 +81,7 @@ public class Decoder {
 	private static boolean isLetter(char c) {
 		
 		/**
-		 * Purpose: This function provide the range of the letter and number for the firewall(Object o) 
+		 * Purpose: This function provide the range of the letter and number for the firewell(Object o) 
 		 * to test whether the user input object is letter or number
 		 * Input Requirement:This function requires a char value as parameter to run.
 		 * Return: This function should return "true" or "false"

@@ -8,9 +8,18 @@ import SQLpackage.Database;
 public class DBtester {
 
 	public static void main(String[] args) {
-		String dbName = "AmazingMusicDB";
+		
+		/*
+		 * This test code may be no longer working.
+		 */
+		
+		/*
+		 * Basic DB connection testing.
+		 * Read all rows from userInfo, 
+		 * then print the first column of first row.
+		 */
 		String query = "select * from userInfo";
-		Database db = new Database(dbName);
+		Database db = new Database();
 		ResultSet rs = null;
 		
 		try {
@@ -20,25 +29,7 @@ public class DBtester {
 				System.out.println(rs.getString(1));
 			}
 		} catch (SQLException e) {
-			System.out.println("Something wrong.");
+			System.out.println("DBtester: Something wrong");
 		}
-		
-/*		try {
-			db.connectDB();
-			rs = db.readDB(query);
-			if (rs != null) {
-				while (rs.next()) {
-					System.out.println(rs.getInt(1)+"\t"+rs.getString(2)+"\t"+rs.getString(3));
-				}	
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null) rs.close();
-			} catch (SQLException e) {}
-			db.closeDB();
-		}*/
 	}
-
 }

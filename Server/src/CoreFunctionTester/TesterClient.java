@@ -30,7 +30,11 @@ public class TesterClient {
 		
 		/*
 		 * Test:
-		 * 
+		 * 1. Validity of registration function.
+		 * 2. User is not registered yet.
+		 * 3. Wrong password.
+		 * 4. Registered user.
+		 * 5. Upload request in GPS-side (not file server side)
 		 */
 		
 		list = new LinkedList();
@@ -38,7 +42,6 @@ public class TesterClient {
 		user = new User("icho@ucsc.edu", "cofls8680*");
 		list.add(user);
 		System.out.println((String) SocketClient.request(list));
-		
 		
 		list = new LinkedList();
 		list.add("lgn");
@@ -62,11 +65,12 @@ public class TesterClient {
 		list.add("upl");
 		MessageDigest md;
 		try {
+			String directory = "C:\\Users\\인영\\Desktop\\배두환.txt";
 			md = MessageDigest.getInstance("MD5");
-			md.update(Files.readAllBytes(Paths.get("C:\\Users\\인영\\Desktop\\배두환.txt")));
+			md.update(Files.readAllBytes(Paths.get(directory)));
 		    byte[] digest = md.digest();
 		    BigInteger bigInt = new BigInteger(1,digest);		
-			FileInfo fInfo = new FileInfo(uid, "C:\\Users\\인영\\Desktop\\배두환.txt", bigInt.toString(16));
+			FileInfo fInfo = new FileInfo(uid, directory, bigInt.toString(16), directory.substring(directory.lastIndexOf(".")));
 			list.add(fInfo);
 			verification(((String) SocketClient.request(list)).equals("UPS"));
 		} catch (NoSuchAlgorithmException | IOException e) {

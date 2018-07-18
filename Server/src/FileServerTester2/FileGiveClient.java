@@ -7,7 +7,7 @@ import Object.LinkedList;
 import Object.FileInfo;
 
 public class FileGiveClient {
-	public static void fileGiveRequest(LinkedList list, String Filename) {
+	public static Object fileGiveRequest(LinkedList list, String Filename) {
 		Socket socket = null;
 		ObjectOutputStream objOutStream = null;
 		ObjectInputStream objInStream = null;
@@ -19,7 +19,7 @@ public class FileGiveClient {
 		File file = null;
 		
 		try {
-			socket = new Socket("127.0.0.1", 18702);
+			socket = new Socket("localhost", 18702);
 			
 			objOutStream = new ObjectOutputStream(socket.getOutputStream());
 			objOutStream.writeObject(list);
@@ -46,7 +46,7 @@ public class FileGiveClient {
 				objInStream = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
 				result = objInStream.readObject();
 				
-				System.out.println(result);
+				System.out.println(result); // debug
 			}
 			else {
 				System.out.println("There isn't a file");
@@ -60,6 +60,7 @@ public class FileGiveClient {
 			try { if (objOutStream != null) objOutStream.close(); } catch (IOException e) {};
 			try { if (objInStream != null) objInStream.close(); } catch (IOException e) {};
 			try { if (socket != null) socket.close(); } catch (IOException e) {};
+			return result;
 		}
 	}
 }
