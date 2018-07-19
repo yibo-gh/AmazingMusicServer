@@ -83,7 +83,7 @@ public class Request {
 		LinkedList list = new LinkedList();
 		list.add("sch");
 		
-		if(name == "") {
+		if(name.equals("")) {
 			return "REQ:INVALIDSTRING";
 		}
 		list.add(name);

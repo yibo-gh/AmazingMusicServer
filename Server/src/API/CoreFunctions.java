@@ -163,7 +163,7 @@ public class CoreFunctions {
 		LinkedList result = new LinkedList();
 		
 		Object o = ll.head.getInfo();
-		if(!o.getClass().equals("")) {
+		if(!o.getClass().equals("".getClass())) {
 			return "SCH:INVALIDSEARCHNAME";
 		}
 		wantSearch = (String) o;
