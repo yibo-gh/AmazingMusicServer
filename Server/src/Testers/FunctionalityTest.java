@@ -12,7 +12,6 @@ public class FunctionalityTest {
 	private static String[] musics = {"B Rossette го╬А╟ее╬.mp3", "Bishops Mess.mp3", "Final Fantasy XIII-2 B Rossette.mp3", "Kings Rage.mp3", "Beethoven Violin Sonata No.5 Spring Mov.1.mp3"};
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 		/*
 		 * System Functionality Tests

@@ -5,8 +5,6 @@ import Object.*;
 
 public class SearchTest1 {
 	
-	private static int step = 0;
-	
 	public static void main(String[] args) {
 		
 		Request.register("ciy@naver.co.kr", "sdfsd");
@@ -47,35 +45,12 @@ public class SearchTest1 {
 		System.out.println(s1.getURL());
 
 		Object second = Request.search("M.C.");
-		LinkedList s = (LinkedList) first;
-		SearchResult s2 = (SearchResult) f.end.getInfo();
-	}
-	
-	private static void PorF(boolean statement) {
-			
-			/**
-			 * Pass or Fail
-			 */
-			step += 1;
-			if (statement) {
-				System.out.println("Pass"+ step);
-			} 
-			else {
-				System.out.println("FAIL" + step);
-			}
-		}
-	private static LinkedList rest(LinkedList ll) {
+		LinkedList s = (LinkedList) second;
+		SearchResult s2 = (SearchResult) s.end.getInfo();
 		
-		/**
-		 * Purpose: obtain the rest(all but head node) of a linkedlist
-		 * Input Requirement: linkedlist
-		 * Output: the rest of linkedlist.
-		 */
-		
-		ll.delete(0);
-		return ll;
+		System.out.println(s.head.getInfo().toString());
+		System.out.println(s2.getOriName());
+		System.out.println(s2.getURL());
 	}
-
-
 
 }

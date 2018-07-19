@@ -4,9 +4,9 @@ import java.net.Socket;
 import java.io.*;
 
 import Object.LinkedList;
-import Object.FileInfo;
 
 public class FileGiveClient {
+	
 	public static Object fileGiveRequest(LinkedList list, String Filename) {
 		
 		/**
@@ -67,14 +67,18 @@ public class FileGiveClient {
 				System.out.println("There isn't a file");
 			}
 			
-			
 		}catch(Exception e) {
 			e.printStackTrace();
+			
 		}finally {
-			try { if (objOutStream != null) objOutStream.close(); } catch (IOException e) {};
-			try { if (objInStream != null) objInStream.close(); } catch (IOException e) {};
-			try { if (socket != null) socket.close(); } catch (IOException e) {};
-			return result;
+			try { if (objInStream != null) objInStream.close(); } catch (IOException e) {}
+			try { if (dtaOutStream != null) dtaOutStream.close(); } catch (IOException e) {}
+			try { if (dtaInStream != null) dtaInStream.close(); } catch (IOException e) {}
+			try { if (bufFileInStream != null) bufFileInStream.close(); } catch (IOException e) {}
+			try { if (fileInStream != null) fileInStream.close(); } catch (IOException e) {}
+			try { if (objOutStream != null) objOutStream.close(); } catch (IOException e) {}
+			try { if (socket != null) socket.close(); } catch (IOException e) {}
 		}
+		return result;
 	}
 }

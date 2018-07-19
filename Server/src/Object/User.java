@@ -1,8 +1,5 @@
 package Object;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import Util.MD5Class;
 
 public class User implements java.io.Serializable {

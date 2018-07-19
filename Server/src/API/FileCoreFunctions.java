@@ -2,16 +2,12 @@ package API;
 
 import java.io.File;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.security.DigestInputStream;
-import java.io.InputStream ;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 import Object.FileInfo;
 import Object.LinkedList;
-import Object.User;
 import SQLpackage.Database;
 import Util.MD5Class;
 

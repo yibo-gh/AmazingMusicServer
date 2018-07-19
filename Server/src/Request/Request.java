@@ -1,12 +1,6 @@
 package Request;
 
 import java.io.File;
-import java.io.IOException;
-import java.math.BigInteger;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 import Client.FileGiveClient;
 import Client.SocketClient;

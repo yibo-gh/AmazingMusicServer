@@ -1,4 +1,3 @@
-import Object.Download;
 import Testers.FunctionalityTest;
 import Testers.RobustnessTest;
 import Testers.ValidationTest;
@@ -16,11 +15,12 @@ public class SysTest {
 		/*
 		 * Things to change
 		 * Download.java - localCache
+		 * FunctionalityTest.java - new Download(~here~);
 		 */
 		
 		ValidationTest.main(null);
 		FunctionalityTest.main(null);
-		//RobustnessTest.main(null);		
+		RobustnessTest.main(null);		
 	}
 
 }

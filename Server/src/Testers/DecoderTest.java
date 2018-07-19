@@ -1,8 +1,5 @@
 package Testers;
 
-import Object.LinkedList;
-import Object.Node;
-
 public class DecoderTest {
 	
 		/*

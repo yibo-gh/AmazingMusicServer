@@ -28,6 +28,7 @@ public class Download {
 				dir.mkdirs();
 			FileOutputStream fos = new FileOutputStream(localCache + this.filename + this.url.substring(this.url.lastIndexOf(".")));
 			fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+			fos.close();
 			return "SUCCEED";
 		} catch (IOException e) {
 			e.printStackTrace();
