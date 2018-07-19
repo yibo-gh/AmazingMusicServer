@@ -1,6 +1,5 @@
 package API;
 
-import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -153,38 +152,5 @@ public class CoreFunctions {
 		} catch (SQLException e) {
 			return "UPL:ERROR";
 		}
-	}
-	
-	public static Object search (LinkedList ll) {
-		
-		Database db = null;
-		ResultSet rs = null;
-		String path = "";
-		
-		Object f = ll.head.getInfo();
-		if (!f.getClass().equals(new FileInfo().getClass()))
-			return "SCH:INVALIDFILEINFO";
-		FileInfo fInfo = (FileInfo) f;
-		
-		try{
-			db = new Database();
-			//rs = db.readDB("select fileSerial, uid from `amazingmusicdb`.`postfile` where oriName='%" + fInfo.getOriName() + "%';");
-			rs = db.readDB("select fileSerial, uid from `amazingmusicdb`.`postfile` where oriName='" + fInfo.getOriName() + "'");
-			if (!rs.next()) {
-				return "SCH: NOMATCHINGFILE";
-			}
-			String fileSerial = rs.getString(0);
-			String uid = rs.getString(1);
-			System.out.println(fileSerial);
-			System.out.println(uid);
-			
-			path =  uid + File.separatorChar + fileSerial;
-			
-			
-		}catch (SQLException e) {
-			return "SCH: ERROR";
-		}
-		
-		return path;
 	}
 }
