@@ -38,12 +38,10 @@ public class User implements java.io.Serializable {
 		 * Purpose: check the validity of email String.
 		 * Exact the same code in User.java
 		 */
-		
-		String email_pattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-				+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"; // just a complicated regular expression
-		Pattern pattern = Pattern.compile(email_pattern);
-		Matcher matcher = pattern.matcher(email);
-		return matcher.matches();
+		if (email.split("@").length != 2 || email.split("\\.").length < 2)
+			return false;
+		else 
+			return true;
 	}
 		
 	public String getName() { 

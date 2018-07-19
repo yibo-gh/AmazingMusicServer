@@ -1,7 +1,7 @@
 import Object.Download;
 import Testers.FunctionalityTest;
 import Testers.RobustnessTest;
-import Testers.VulnerabilityTest;
+import Testers.validationTest;
 
 public class SysTest {
 
@@ -13,8 +13,8 @@ public class SysTest {
 		 * Output: nothing
 		 */
 
-		VulnerabilityTest.main(null);
-	//	FunctionalityTest.main(null);
+		//validationTest.main(null);
+		FunctionalityTest.main(null);
 	//	RobustnessTest.main(null);
 		
 	//	String u, f;
