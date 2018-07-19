@@ -21,7 +21,8 @@ public class FunctionalityTest {
 		 * 4. Music downloading
 		 */
 		
-		registerTest();
+		musicDownloadingTest2();
+		//registerTest();
 	}
 
 	private static void registerTest() {
@@ -101,7 +102,70 @@ public class FunctionalityTest {
 		
 		System.out.println("Music downloading test pass. Continues.\n");
 		System.out.println("All tests pass. Done.");
-	}	
+	}
+	
+	private static void musicDownloadingTest2() {
+		System.out.println("Music downloading test 2");
+		
+		Object llObj, srObj;
+		int len;
+		LinkedList ll;
+		SearchResult sr;
+		String uid, url, filename;
+		
+		if (!Request.register("muDownTe@st.co.kr", "download").equals("UPS"))
+			return;
+		uid = Request.login("muDownTe@st.co.kr", "download");
+		if (uid.contains("LOGIN:"))
+			return;
+		Request.upload(uid, "C:\\Users\\인영\\Dropbox\\Music\\클래식\\" + "B Rossette 하얀거탑.mp3");
+		Request.upload(uid, "C:\\Users\\인영\\Dropbox\\Music\\클래식\\" + "Beethoven Violin Sonata No.5 Spring Mov.1.mp3");
+		Request.upload(uid, "C:\\Users\\인영\\Dropbox\\Music\\클래식\\" + "Bishops Mess.mp3");
+		Request.upload(uid, "C:\\Users\\인영\\Dropbox\\Music\\클래식\\" + "Final Fantasy XIII-2 B Rossette.mp3");
+		Request.upload(uid, "C:\\Users\\인영\\Dropbox\\Music\\클래식\\" + "Kings Rage.mp3");
+		Request.upload(uid, "C:\\Users\\인영\\Dropbox\\Music\\클래식\\" + "Talesweaver OST - Reminiscence.mp3");
+		Request.upload(uid, "C:\\Users\\인영\\Dropbox\\Music\\클래식\\" + "Yiruma, (이루마) - Reminiscent.mp3");
+		Request.upload(uid, "C:\\Users\\인영\\Dropbox\\Music\\클래식\\" + "센과 치히로의 행방불명 - 언제나 몇번이라도 (Spirited Away - Always With Me).mp3");
+		Request.upload(uid, "C:\\Users\\인영\\Dropbox\\Music\\클래식\\" + "차르디시_몬티 곡_바이올린-신지아_피아노-손열음.mp3");
+		Request.upload(uid, "C:\\Users\\인영\\Dropbox\\Music\\클래식\\" + "히사이시 조   Summer.mp3");
+		
+		Request.register("iwantto@down.load", "downdown");
+		uid = Request.login("iwantto@down.load", "downdown");
+		
+		llObj = Request.search("Mess.mp3");
+		ll = (LinkedList) llObj;
+		srObj = ll.head.getInfo();
+		sr = (SearchResult)srObj;
+		url = "file://localhost/C:\\Users\\인영\\Documents\\GitHub\\AmazingMusicServer\\Server\\"+sr.getURL();
+		filename = "Mess";
+		Request.download(url, filename);
+		
+		llObj = Request.search("Beethoven");
+		ll = (LinkedList) llObj;
+		srObj = ll.head.getInfo();
+		sr = (SearchResult)srObj;
+		url = "file://localhost/C:\\Users\\인영\\Documents\\GitHub\\AmazingMusicServer\\Server\\"+sr.getURL();
+		filename = "Beethoven";
+		Request.download(url, filename);
+		
+		llObj = Request.search("Fantasy");
+		ll = (LinkedList) llObj;
+		srObj = ll.head.getInfo();
+		sr = (SearchResult)srObj;
+		url = "file://localhost/C:\\Users\\인영\\Documents\\GitHub\\AmazingMusicServer\\Server\\"+sr.getURL();
+		filename = "Fantasy";
+		Request.download(url, filename);
+		
+		llObj = Request.search("손열음.mp3");
+		ll = (LinkedList) llObj;
+		srObj = ll.head.getInfo();
+		sr = (SearchResult)srObj;
+		url = "file://localhost/C:\\Users\\인영\\Documents\\GitHub\\AmazingMusicServer\\Server\\"+sr.getURL();
+		filename = "손열음";
+		Request.download(url, filename);
+		
+		System.out.println("Music downloading test 2 pass. Done.");
+	}
 	
 	private static void printError (int i, String e, String p) {
 		System.out.print("Test failed at ");
