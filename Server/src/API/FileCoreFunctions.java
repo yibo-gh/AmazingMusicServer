@@ -46,18 +46,6 @@ public class FileCoreFunctions {
 		}
 	}
    
-	public static String download (LinkedList ll) {
-		
-		Object u = ll.head.getInfo();
-      
-		FileInfo flInfo = (FileInfo) u;
-      
-		System.out.println(flInfo.getUID());
-		System.out.println(flInfo.getOriName());
-		System.out.println(flInfo.getMD5());
-		
-		return "downloaded";
-	}
 	
 	public static String validate(FileInfo flInfo) {
 		/**
@@ -123,9 +111,11 @@ public class FileCoreFunctions {
 				/*
 				 * insert information corresponding to file to DB postfile
 				 */
+				
+				String oriName = flInfo.getOriName().replaceAll("'", "''");
 				String inPostFile = "insert into `amazingmusicdb`.`postfile` (fileSerial, uid, oriName) "
 						+ "values ('" + flInfo.getFileSerial() + "', '" + flInfo.getUID() + "', '"
-						+ flInfo.getOriName() + "')";
+						+ oriName + "')";
 				System.out.println(inPostFile);
 				result = db.updateDB(inPostFile);
 				

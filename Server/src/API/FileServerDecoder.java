@@ -65,8 +65,6 @@ public class FileServerDecoder {
 		case "upload":
 			return FileCoreFunctions.upload(rest(ll));
 
-		case "download":
-			return FileCoreFunctions.download(rest(ll));
 		/*
 		 * We need to add some lines after decide APIs
 		 */
