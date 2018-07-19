@@ -2,7 +2,7 @@ package Testers;
 
 import Request.Request;
 
-public class validationTest {
+public class ValidationTest {
 
 	public static void main(String[] args) {
 		

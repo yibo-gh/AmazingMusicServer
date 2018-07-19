@@ -1,7 +1,7 @@
 import Object.Download;
 import Testers.FunctionalityTest;
 import Testers.RobustnessTest;
-import Testers.validationTest;
+import Testers.ValidationTest;
 
 public class SysTest {
 
@@ -13,7 +13,7 @@ public class SysTest {
 		 * Output: nothing
 		 */
 
-		validationTest.main(null);
+		ValidationTest.main(null);
 		FunctionalityTest.main(null);
 	//	RobustnessTest.main(null);
 		
@@ -22,7 +22,7 @@ public class SysTest {
 	//	f = "eunseo2";
 		
 	//	Download dn = new Download(u, f);
-	//	dn.start();
+	//	System.out.println(dn.start());
 		
 	}
 

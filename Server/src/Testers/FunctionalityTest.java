@@ -1,5 +1,7 @@
 package Testers;
 
+import Object.Download;
+import Object.LinkedList;
 import Request.Request;
 
 public class FunctionalityTest {
@@ -16,6 +18,7 @@ public class FunctionalityTest {
 		 * 1. Register
 		 * 2. Login
 		 * 3. Music uploading
+		 * 4. Music downloading
 		 */
 		
 		registerTest();
@@ -61,8 +64,35 @@ public class FunctionalityTest {
 		}
 		
 		System.out.println("Music uploading test pass. Continues.\n");
+		musicDownloadingTest();
+	}
+	
+	private static void musicDownloadingTest() {
+		System.out.println("Music downloading test");
+		
+		Object obj = Request.search("Rossette");
+		if (!obj.getClass().equals(new LinkedList().getClass()))
+			System.out.println("here1");
+		LinkedList list = (LinkedList) obj;
+		
+		
+		String searchResult = (String) list.head.getInfo();
+		if (!searchResult.equals("SEARCH RESULT"))
+			System.out.println("search fail");
+		list.delete(0);
+		
+		System.out.println("Music downloading test pass. Continues.\n");
 		System.out.println("All tests pass. Done.");
 	}
+	
+	/*
+	 * public static String download(String url, String filename) {
+		Download dn = new Download(url, filename);
+		return dn.start();
+	}
+	 */
+	
+	
 	
 	private static void printError (int i, String e, String p) {
 		System.out.print("Test failed at ");
