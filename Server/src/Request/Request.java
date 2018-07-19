@@ -61,7 +61,7 @@ public class Request {
 			return "REQ:FILENOTEXIST";
 		md5 = MD5Class.FileMD5Generator(file);
 
-		FileInfo fInfo = new FileInfo(uid, directory, md5, directory.substring(directory.lastIndexOf("."))); // Note: need some tests for file extension
+		FileInfo fInfo = new FileInfo(uid, directory.substring(directory.lastIndexOf("\\")+1), md5, directory.substring(directory.lastIndexOf("."))); // Note: need some tests for file extension
 		list.add(fInfo);
 		String tmp = (String) SocketClient.request(list);
 		
@@ -77,6 +77,18 @@ public class Request {
 		}
 		
 		return tmp;
+	}
+	
+	public static Object search(String name) {
+		LinkedList list = new LinkedList();
+		list.add("sch");
+		
+		if(name == "") {
+			return "REQ:INVALIDSTRING";
+		}
+		list.add(name);
+		
+		return SocketClient.request(list);
 	}
 	
 }
