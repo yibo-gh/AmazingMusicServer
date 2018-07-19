@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import Object.FileInfo;
 import Object.LinkedList;
+import Object.SearchResult;
 import Object.User;
 import SQLpackage.Database;
 
@@ -152,5 +153,42 @@ public class CoreFunctions {
 		} catch (SQLException e) {
 			return "UPL:ERROR";
 		}
+	}
+	
+	public static Object search(LinkedList ll) {
+		Database db = null;
+		ResultSet rs = null;
+		String wantSearch = "";
+		SearchResult sr = null;
+		LinkedList result = new LinkedList();
+		
+		Object o = ll.head.getInfo();
+		if(!o.getClass().equals("")) {
+			return "SCH:INVALIDSEARCHNAME";
+		}
+		wantSearch = (String) o;
+		
+		result.add("SEARCH RESULT");
+		try {
+			db = new Database();
+			
+			rs = db.readDB("select * from `amazingmusicdb`.`postfile` where oriName like '%" + wantSearch + "%'");
+			
+			while(rs.next()) {
+				String oriName = rs.getString("oriName");
+				String uid = rs.getString("uid");
+				String fileSerial = rs.getString("fileSerial");
+				
+				sr = new SearchResult(oriName, uid, fileSerial);
+				result.add(sr);
+			}
+			
+			return result;
+			
+			
+		} catch (Exception e) {
+			return "SCH:ERROR";
+		}
+		
 	}
 }
