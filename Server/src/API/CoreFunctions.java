@@ -141,8 +141,10 @@ public class CoreFunctions {
 				return "UPL:FILEEXISTS";
 			}
 			
+			String oriName = fInfo.getOriName().replaceAll("'", "''");
+			
 			String result = db.updateDB("insert into `amazingmusicdb`.`waitingfile` (MD5, fileSerial, uid, oriName) "
-					+"values ('"+fInfo.getMD5()+"', '"+fInfo.getFileSerial()+"', '"+fInfo.getUID()+"', '"+fInfo.getOriName()+"')");
+					+"values ('"+fInfo.getMD5()+"', '"+fInfo.getFileSerial()+"', '"+fInfo.getUID()+"', '"+oriName+"')");
 			if (result.equals("UPS")) {
 				return "UPS";
 			}

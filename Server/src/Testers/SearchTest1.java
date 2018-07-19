@@ -32,25 +32,70 @@ public class SearchTest1 {
 				+ "곽진언-02-나랑 갈래-320k.mp3");
 		Request.upload(uid3, "C:\\Users\\user\\Desktop\\음악\\2018.4\\"
 				+ "M.C. the Max-10-다시, 노래...-320k.mp3");
+		Request.upload(uid3, "C:\\Users\\user\\Documents\\카카오톡 받은 파일\\"
+				+ "Beethoven Violin 'Sonata' No.5 Spring Mov.1.mp3");
 		
 		System.out.println("4");
 		
-		Object first = Request.search("호아");
-		System.out.println(first);
-		LinkedList f = (LinkedList) first;
-		SearchResult s1 = (SearchResult) f.end.getInfo();
+		musicDownloadingTest();
+	}
+	
+	private static void musicDownloadingTest() {
+		System.out.println("Music downloading test");
 		
-		System.out.println(f.head.getInfo().toString());
-		System.out.println(s1.getOriName());
-		System.out.println(s1.getURL());
-
-		Object second = Request.search("M.C.");
-		LinkedList s = (LinkedList) second;
-		SearchResult s2 = (SearchResult) s.end.getInfo();
+		Object llObj, srObj;
+		int len;
+		LinkedList ll;
+		SearchResult sr;
+		String url, filename;
 		
-		System.out.println(s.head.getInfo().toString());
-		System.out.println(s2.getOriName());
-		System.out.println(s2.getURL());
+		/*
+		 * Request to search "Rossette"
+		 */
+		llObj = Request.search("ee");
+		if (llObj.getClass().equals("".getClass())) {
+			printError(0x04, "ee");
+			return;
+		}
+		ll = (LinkedList) llObj;
+		
+		len = ll.getLength();
+		for (int i=0; i<len; i++) {
+			srObj = ll.head.getInfo();
+			sr = (SearchResult)srObj;
+			url = "file://localhost/C:\\Users\\user\\Documents\\GitHub\\AmazingMusicServer\\"+sr.getURL();
+			filename = "genevahall" + i;
+			if (!Request.download(url,filename).equals("SUCCEED")) {
+				printError(0x04, filename);
+				return;
+			}
+			ll.delete(0);
+		}
+		
+		System.out.println("Music downloading test pass. Continues.\n");
+		System.out.println("All tests pass. Done.");
+	}
+	
+	private static void printError (int i, String e, String p) {
+		System.out.print("Test failed at ");
+		switch (i) {
+		case (0x01): System.out.print("Registration validator"); break;
+		case (0x02): System.out.print("Login validator"); break;
+		default: System.out.println("invalid function.");
+		}
+		System.out.println(" with " + e + " & " + p);
+		System.out.println("Test terminated with error.");
+	}
+	
+	private static void printError (int i, String d) {
+		System.out.print("Test failed at ");
+		switch (i) {
+		case (0x03): System.out.print("Uploading validator"); break;
+		case (0x04): System.out.print("Downloading validator"); break;
+		default: System.out.println("invalid function.");
+		}
+		System.out.println(" with " + d);
+		System.out.println("Test terminated with error.");
 	}
 
 }
