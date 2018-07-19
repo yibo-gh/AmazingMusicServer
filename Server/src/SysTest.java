@@ -13,7 +13,7 @@ public class SysTest {
 		 * Output: nothing
 		 */
 
-		//validationTest.main(null);
+		validationTest.main(null);
 		FunctionalityTest.main(null);
 	//	RobustnessTest.main(null);
 		

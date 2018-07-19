@@ -6,7 +6,7 @@ public class FunctionalityTest {
 
 	private static String[] emails = {"ciy405@naver.korea", "test1@gmail.com", "ganadara@xx.xx", "form@hubo.co.jp", "damm@go.go.go"};
 	private static String[] uids = new String[emails.length];
-	private static String[] musics = {"B Rossette го╬А╟ее╬.mp3", "Bishop's Mess.mp3", "Final Fantasy XIII-2 B Rossette.mp3", "King's Rage.mp3", "Beethoven Violin Sonata No.5 'Spring' Mov.1.mp3"};
+	private static String[] musics = {"B Rossette го╬А╟ее╬.mp3", "Bishops Mess.mp3", "Final Fantasy XIII-2 B Rossette.mp3", "Kings Rage.mp3", "Beethoven Violin Sonata No.5 Spring Mov.1.mp3"};
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

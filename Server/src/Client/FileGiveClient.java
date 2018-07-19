@@ -56,15 +56,12 @@ public class FileGiveClient {
 				dtaOutStream = new DataOutputStream(socket.getOutputStream());
 				dtaOutStream.write(filebyte, 0, filebyte.length);
 				dtaOutStream.flush();
-				
-				System.out.println("File "+Filename+" sent to Server.");
-				
+								
 				/*
 				 * get some string from the file server.
 				 */
 				objInStream = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
 				result = objInStream.readObject();
-				System.out.println(result); // debug
 			}
 			else {
 				System.out.println("There isn't a file");
