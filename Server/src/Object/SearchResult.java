@@ -12,6 +12,13 @@ public class SearchResult implements java.io.Serializable {
 	public SearchResult() {};
 	
 	public SearchResult(String oriName, String uid, String fileSerial) {
+		
+		/*
+		 * Server gives a series of(linked list) SearchResult objects to client.
+		 * The SearchResult object contains file's original name, user id, and file's serial number.
+		 * These values are all the information client need to download a file from the server.
+		 */
+		
 		this.oriName = oriName;
 		this.url = uid + File.separatorChar + fileSerial + oriName.substring(oriName.lastIndexOf("."));
 	}

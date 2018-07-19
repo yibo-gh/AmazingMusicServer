@@ -13,6 +13,7 @@ import Util.MD5Class;
 public class Request {
 	
 	public static String register(String email, String pw) {
+		
 		LinkedList list = new LinkedList();
 		list.add("reg");
 		User user = new User(email, pw);
@@ -22,7 +23,8 @@ public class Request {
 		return (String) SocketClient.request(list);
 	}
 	
-	public static String login(String email, String pw) {		
+	public static String login(String email, String pw) {	
+		
 		LinkedList list = new LinkedList();
 		list.add("lgn");
 		User user = new User(email, pw);
@@ -75,15 +77,51 @@ public class Request {
 	}
 	
 	public static Object search(String name) {
+		
 		LinkedList list = new LinkedList();
 		list.add("sch");
 		
 		if(name.equals("")) {
-			return "REQ:INVALIDSTRING";
+			return "REQ:INVALIDNAME";
 		}
 		list.add(name);
 		
-		return SocketClient.request(list);
+		Object llObj = SocketClient.request(list);
+		
+		/*
+		 * Make sure that the llObj is a LinkedList object.
+		 * Convert the type of llObj to LinkedList.
+		 */
+		if (!llObj.getClass().equals(new LinkedList().getClass())) {
+			return "REQ:NOTLIST";
+		}
+		LinkedList ll = (LinkedList) llObj;
+		
+		/*
+		 * Verify that search request has completed normally.
+		 * However, this does not mean there is a file in the server the user want.
+		 */
+		String searchResult = (String) ll.head.getInfo();
+		if (!searchResult.equals("SEARCH RESULT")) {
+			return "REQ:REQUESTFAIL";
+		}
+		
+		/*
+		 * Although the search request has completed successfully,
+		 * the server might not have the file which user want.
+		 * In this case, there is no SearchResult object in the linked list.
+		 * There is only header "SEARCH RESULT"
+		 */
+		if (ll.getLength() == 1) {
+			return "REQ:NOSUCHFILE";
+		}
+		
+		/*
+		 * User! Choose a file.
+		 * Delete the header.
+		 */
+		ll.delete(0);
+		return ll;
 	}
 	
 	public static String download(String url, String filename) {

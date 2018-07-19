@@ -70,42 +70,37 @@ public class FunctionalityTest {
 	private static void musicDownloadingTest() {
 		System.out.println("Music downloading test");
 		
-		Object obj = Request.search("Rossette");
-		if (!obj.getClass().equals(new LinkedList().getClass())) {
-			System.out.println("here1");
-			return;
-		}
-		LinkedList list = (LinkedList) obj;
-		
-		
-		String searchResult = (String) list.head.getInfo();
-		if (!searchResult.equals("SEARCH RESULT")) {
-			System.out.println("search fail");
-			return;
-		}
-		
-		list.delete(0);
-		if (list.getLength() == 0) {
-			System.out.println("No such file");
-			return;
-		}
+		Object llObj, srObj;
+		int len;
+		LinkedList ll;
+		SearchResult sr;
+		String url, filename;
 		
 		/*
-		 * Choose a file
-		 * I choose the first file(list.head.getInfo()) for convenient test
+		 * Request to search "Rossette"
 		 */
-		Object obj2 = list.head.getInfo();
-		if (!obj2.getClass().equals(new SearchResult().getClass())) {
-			System.out.println("Not a searchresult");
+		llObj = Request.search("Rossette");
+		if (llObj.getClass().equals("".getClass())) {
+			printError(0x04, "Rossette");
 			return;
 		}
+		ll = (LinkedList) llObj;
 		
-		SearchResult sr = (SearchResult)obj2;
-		Download dn = new Download("file://localhost/C:\\Users\\인영\\Documents\\GitHub\\AmazingMusicServer\\Server\\"+sr.getURL(), "genevahall");
-		System.out.println(dn.start());
+		len = ll.getLength();
+		for (int i=0; i<len; i++) {
+			srObj = ll.head.getInfo();
+			sr = (SearchResult)srObj;
+			url = "file://localhost/C:\\Users\\인영\\Documents\\GitHub\\AmazingMusicServer\\Server\\"+sr.getURL();
+			filename = "genevahall" + i;
+			if (!Request.download(url,filename).equals("SUCCEED")) {
+				printError(0x04, filename);
+				return;
+			}
+			ll.delete(0);
+		}
 		
-		//System.out.println("Music downloading test pass. Continues.\n");
-		//System.out.println("All tests pass. Done.");
+		System.out.println("Music downloading test pass. Continues.\n");
+		System.out.println("All tests pass. Done.");
 	}	
 	
 	private static void printError (int i, String e, String p) {
@@ -123,6 +118,7 @@ public class FunctionalityTest {
 		System.out.print("Test failed at ");
 		switch (i) {
 		case (0x03): System.out.print("Uploading validator"); break;
+		case (0x04): System.out.print("Downloading validator"); break;
 		default: System.out.println("invalid function.");
 		}
 		System.out.println(" with " + d);

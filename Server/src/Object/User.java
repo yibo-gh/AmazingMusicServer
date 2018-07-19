@@ -35,7 +35,12 @@ public class User implements java.io.Serializable {
 		 * Purpose: check the validity of email String.
 		 * Exact the same code in User.java
 		 */
-		if (email.split("@").length != 2 || email.split("\\.").length < 2)
+		if (email.split("@").length != 2 || email.split("@")[1].split("\\.").length < 2)
+			/*
+			 * if there are more than one @ in email, or
+			 * if there are less than two . in email domain,
+			 * then the email is invalid.
+			 */
 			return false;
 		else 
 			return true;
