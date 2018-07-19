@@ -13,16 +13,16 @@ public class SysTest {
 		 * Output: nothing
 		 */
 
-/*		VulnerabilityTest.main(null);
-		FunctionalityTest.main(null);
-		RobustnessTest.main(null);*/
+		VulnerabilityTest.main(null);
+	//	FunctionalityTest.main(null);
+	//	RobustnessTest.main(null);
 		
-		String u, f;
-		u = "https://pbs.twimg.com/media/CxO_wziVQAEiEsL.jpg";
-		f = "eunseo2";
+	//	String u, f;
+	//	u = "https://pbs.twimg.com/media/CxO_wziVQAEiEsL.jpg";
+	//	f = "eunseo2";
 		
-		Download dn = new Download(u, f);
-		dn.start();
+	//	Download dn = new Download(u, f);
+	//	dn.start();
 		
 	}
 

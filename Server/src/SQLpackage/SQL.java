@@ -9,8 +9,8 @@ public class SQL {
 	String id, pw, dbName; 
 	
 	public SQL() {
-		this.id = "root"; //"amaMusic";
-		this.pw = "cofls8680*"; //"loveCS115.";
+		this.id = "amaMusic";
+		this.pw = "loveCS115.";
 		this.dbName = "amazingmusicdb";
 	}
 	
