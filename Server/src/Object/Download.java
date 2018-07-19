@@ -30,6 +30,7 @@ public class Download {
 			fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
 			return "SUCCEED";
 		} catch (IOException e) {
+			e.printStackTrace();
 			return "DOWN:FAIL";
 		}
 	}

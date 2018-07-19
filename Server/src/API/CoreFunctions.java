@@ -52,7 +52,7 @@ public class CoreFunctions {
 			 */
 			String result = db.updateDB("insert into `amazingmusicdb`.`userInfo` (emailUserName, emailDomain, uid, pw) "
 								+ "values ('" + user.getName() + "', '" + user.getDomain() + "', '" + user.getUID() + "', '" + user.getUserPW() + "')");
-			if (result == "UPS") {
+			if (result.equals("UPS")) {
 				return "UPS";
 			}
 			else {
@@ -143,7 +143,7 @@ public class CoreFunctions {
 			
 			String result = db.updateDB("insert into `amazingmusicdb`.`waitingfile` (MD5, fileSerial, uid, oriName) "
 					+"values ('"+fInfo.getMD5()+"', '"+fInfo.getFileSerial()+"', '"+fInfo.getUID()+"', '"+fInfo.getOriName()+"')");
-			if (result == "UPS") {
+			if (result.equals("UPS")) {
 				return "UPS";
 			}
 			else {

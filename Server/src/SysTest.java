@@ -13,17 +13,14 @@ public class SysTest {
 		 * Output: nothing
 		 */
 
+		/*
+		 * Things to change
+		 * Download.java - localCache
+		 */
+		
 		ValidationTest.main(null);
 		FunctionalityTest.main(null);
-	//	RobustnessTest.main(null);
-		
-	//	String u, f;
-	//	u = "https://pbs.twimg.com/media/CxO_wziVQAEiEsL.jpg";
-	//	f = "eunseo2";
-		
-	//	Download dn = new Download(u, f);
-	//	System.out.println(dn.start());
-		
+		//RobustnessTest.main(null);		
 	}
 
 }

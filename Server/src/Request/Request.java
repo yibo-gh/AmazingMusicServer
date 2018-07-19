@@ -10,6 +10,7 @@ import java.security.NoSuchAlgorithmException;
 
 import Client.FileGiveClient;
 import Client.SocketClient;
+import Object.Download;
 import Object.FileInfo;
 import Object.LinkedList;
 import Object.User;
@@ -91,4 +92,8 @@ public class Request {
 		return SocketClient.request(list);
 	}
 	
+	public static String download(String url, String filename) {
+		Download dn = new Download(url, filename);
+		return dn.start();
+	}
 }

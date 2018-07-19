@@ -2,6 +2,7 @@ package Testers;
 
 import Object.Download;
 import Object.LinkedList;
+import Object.SearchResult;
 import Request.Request;
 
 public class FunctionalityTest {
@@ -71,28 +72,42 @@ public class FunctionalityTest {
 		System.out.println("Music downloading test");
 		
 		Object obj = Request.search("Rossette");
-		if (!obj.getClass().equals(new LinkedList().getClass()))
+		if (!obj.getClass().equals(new LinkedList().getClass())) {
 			System.out.println("here1");
+			return;
+		}
 		LinkedList list = (LinkedList) obj;
 		
 		
 		String searchResult = (String) list.head.getInfo();
-		if (!searchResult.equals("SEARCH RESULT"))
+		if (!searchResult.equals("SEARCH RESULT")) {
 			System.out.println("search fail");
-		list.delete(0);
+			return;
+		}
 		
-		System.out.println("Music downloading test pass. Continues.\n");
-		System.out.println("All tests pass. Done.");
-	}
-	
-	/*
-	 * public static String download(String url, String filename) {
-		Download dn = new Download(url, filename);
-		return dn.start();
-	}
-	 */
-	
-	
+		list.delete(0);
+		if (list.getLength() == 0) {
+			System.out.println("No such file");
+			return;
+		}
+		
+		/*
+		 * Choose a file
+		 * I choose the first file(list.head.getInfo()) for convenient test
+		 */
+		Object obj2 = list.head.getInfo();
+		if (!obj2.getClass().equals(new SearchResult().getClass())) {
+			System.out.println("Not a searchresult");
+			return;
+		}
+		
+		SearchResult sr = (SearchResult)obj2;
+		Download dn = new Download("file://localhost/C:\\Users\\ÀÎ¿µ\\Documents\\GitHub\\AmazingMusicServer\\Server\\"+sr.getURL(), "genevahall");
+		System.out.println(dn.start());
+		
+		//System.out.println("Music downloading test pass. Continues.\n");
+		//System.out.println("All tests pass. Done.");
+	}	
 	
 	private static void printError (int i, String e, String p) {
 		System.out.print("Test failed at ");
