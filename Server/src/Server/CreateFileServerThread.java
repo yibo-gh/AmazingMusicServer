@@ -79,7 +79,6 @@ public class CreateFileServerThread extends Thread {
 				 */
 				while (true) {
 					size = dtaInStream.read(buffer, 0, buffer.length);
-					System.out.println(size);
 					fileOutStream.write(buffer, 0, size);
 					if (size < 1024) {
 						System.out.println("break");
