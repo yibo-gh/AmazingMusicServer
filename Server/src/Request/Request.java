@@ -37,6 +37,16 @@ public class Request {
 		return (String) SocketClient.request(list);
 	}
 	
+	public static String search(String filename) {
+		LinkedList list = new LinkedList();
+		list.add("sch");
+		
+		FileInfo fInfo = new FileInfo("", filename, "", filename.substring(filename.lastIndexOf(".")));
+		list.add(fInfo);
+		
+		return (String) SocketClient.request(list);
+	}
+	
 	public static String upload(String uid, String directory) {	
 		
 		/**
@@ -61,7 +71,7 @@ public class Request {
 			return "REQ:FILENOTEXIST";
 		md5 = MD5Class.FileMD5Generator(file);
 
-		FileInfo fInfo = new FileInfo(uid, directory, md5, directory.substring(directory.lastIndexOf("."))); // Note: need some tests for file extension
+		FileInfo fInfo = new FileInfo(uid, directory.substring(directory.lastIndexOf("//")+1), md5, directory.substring(directory.lastIndexOf("."))); // Note: need some tests for file extension
 		list.add(fInfo);
 		String tmp = (String) SocketClient.request(list);
 		
