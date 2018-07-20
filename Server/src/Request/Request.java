@@ -80,10 +80,10 @@ public class Request {
 		
 		LinkedList list = new LinkedList();
 		list.add("sch");
-		
+		/*
 		if(name.equals("")) {
 			return "REQ:INVALIDNAME";
-		}
+		}*/
 		list.add(name);
 		
 		Object llObj = SocketClient.request(list);
