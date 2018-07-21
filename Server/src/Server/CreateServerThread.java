@@ -36,7 +36,7 @@ public class CreateServerThread extends Thread {
 		try {
 			ObjectOutputStream objOutStream = new ObjectOutputStream(this.clientSocket.getOutputStream());
 			ObjectInputStream objInStream = new ObjectInputStream(new BufferedInputStream(this.clientSocket.getInputStream())); 
-			
+			System.out.println("Stream running");
 			/*
 			 *  receive client request from the stream, 
 			 *  give the information to the decoder,
@@ -45,6 +45,7 @@ public class CreateServerThread extends Thread {
 			 */
 			
 			Object userRequest = objInStream.readObject();
+			System.out.println("Received something");
 			Object ob = Decoder.firewall(userRequest); // check if userRequest is linkedlist in firewall
 			objOutStream.writeObject(ob);
 			objOutStream.flush();
