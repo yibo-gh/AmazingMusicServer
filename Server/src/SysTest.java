@@ -20,7 +20,7 @@ public class SysTest {
 		 * FunctionalityTest.java - new Download(~here~); (url part)
 		 */
 		ValidationTest.main(null);
-		//FunctionalityTest.main(null);
+		FunctionalityTest.main(null);
 		//RobustnessTest.main(null);
 	}
 

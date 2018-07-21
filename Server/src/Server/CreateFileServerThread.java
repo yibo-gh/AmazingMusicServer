@@ -64,7 +64,7 @@ public class CreateFileServerThread extends Thread {
 			if (sign.head.getInfo() == "OK") {
 				System.out.println("Now client sends files");
 				FileInfo flInfo = (FileInfo) sign.end.getInfo();
-				File music = new File("temporary" + File.separatorChar + flInfo.getFileSerial() + flInfo.getExension());
+				File music = new File("/Volumes/Common Volume/Sites/yg-home.site/proj/amamusic/audio/temporary" + File.separatorChar + flInfo.getFileSerial() + flInfo.getExension());
 				FileOutputStream fileOutStream = new FileOutputStream(music);
 
 				DataInputStream dtaInStream = new DataInputStream(this.clientSocket.getInputStream());
