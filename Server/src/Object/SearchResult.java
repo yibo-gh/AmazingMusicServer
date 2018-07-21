@@ -20,7 +20,7 @@ public class SearchResult implements java.io.Serializable {
 		 */
 		
 		this.oriName = oriName;
-		this.url = "/Volumes/Common Volume/Sites/https://yg-home.site/proj/amamusic/audio/" + uid + File.separatorChar + fileSerial + oriName.substring(oriName.lastIndexOf("."));
+		this.url = "/Volumes/Common Volume/Sites/yg-home.site/proj/amamusic/audio/" + uid + File.separatorChar + fileSerial + oriName.substring(oriName.lastIndexOf("."));
 	}
 	
 	public String getURL() {
