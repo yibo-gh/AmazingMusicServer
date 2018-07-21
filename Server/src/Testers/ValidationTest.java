@@ -4,7 +4,7 @@ import Request.Request;
 
 public class ValidationTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		/*
 		 * System Validation Tests
@@ -18,7 +18,7 @@ public class ValidationTest {
 		
 	}
 	
-	private static void invalidEmail() {
+	private static void invalidEmail() throws Exception {
 		System.out.println("Invalid email test");
 		
 		if (!Request.register("ciy@sdf@com.com", "sdf").equals("INVALIDEMAIL")) {
@@ -38,7 +38,7 @@ public class ValidationTest {
 		existingID();
 	}
 
-	private static void existingID() {
+	private static void existingID() throws Exception {
 		System.out.println("Existing ID test");
 		
 		if (!Request.register("test1*@naver.com", "duwn3823*").equals("UPS")) { // registration succeed
@@ -70,7 +70,7 @@ public class ValidationTest {
 		wrongPW();
 	}
 	
-	private static void wrongPW() {
+	private static void wrongPW() throws Exception {
 		System.out.println("Wrong PW test");
 		
 		if (!Request.login("test1*@naver.com", "duwn3823").equals("LOGIN:PWINCORRECT")) { // registration succeed
@@ -90,7 +90,7 @@ public class ValidationTest {
 		unregisteredID();
 	}
 	
-	private static void unregisteredID() {
+	private static void unregisteredID() throws Exception {
 		System.out.println("Unregistered ID test");
 		
 		if (!Request.login("ciy2@naver.co.kr", "duwn3823").equals("LOGIN:NOTREG")) { // registration succeed

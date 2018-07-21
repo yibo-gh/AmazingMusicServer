@@ -4,7 +4,7 @@ import Testers.ValidationTest;
 
 public class SysTest {
 
-	public static void main (String args[]) {
+	public static void main (String args[]) throws Exception{
 		
 		/**
 		 * Purpose: Test code for the combination of gps and file servers

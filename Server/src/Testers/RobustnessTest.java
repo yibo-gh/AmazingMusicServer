@@ -4,7 +4,7 @@ import Request.Request;
 
 public class RobustnessTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		/*
 		 * System Functionality Robustness Tests
@@ -15,7 +15,7 @@ public class RobustnessTest {
 	
 	}
 
-	private static void fileNotExistTest() {
+	private static void fileNotExistTest() throws Exception {
 		String uid, filename;
 		System.out.println("File does not exist test");
 		

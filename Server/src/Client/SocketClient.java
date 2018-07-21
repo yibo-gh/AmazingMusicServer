@@ -23,7 +23,7 @@ public class SocketClient {
 	 */
 	
 	@SuppressWarnings("finally")
-	public static Object request(LinkedList list) {
+	public static Object request(LinkedList list) throws Exception {
 		
 		/**
 		 * Purpose: Client send a request by a linkedlist which contains several information
@@ -32,7 +32,7 @@ public class SocketClient {
 		 * Output: Return an object which server sent
 		 */
 		
-		Socket socket = null;
+		Socket socket =  new Socket("yg-home.site", 18701);
 		ObjectOutputStream objOutStream = null;
 		ObjectInputStream objInStream = null;
 		Object obj = null;
@@ -43,7 +43,6 @@ public class SocketClient {
 			 * Next, server will sent an object by the result of server works.
 			 * Return the object.
 			 */
-			socket = new Socket("yg-home.site", 18701); // Note: need to change later. need to decide IP address. 
 			
 			objOutStream = new ObjectOutputStream(socket.getOutputStream());
 			objOutStream.writeObject(list);

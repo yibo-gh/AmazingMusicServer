@@ -10,7 +10,7 @@ public class FunctionalityTest {
 	private static String[] uids = new String[emails.length];
 	private static String[] musics = {"B Rossette го╬А╟ее╬.mp3", "Bishops Mess.mp3", "Final Fantasy XIII-2 B Rossette.mp3", "Kings Rage.mp3", "Beethoven Violin Sonata No.5 Spring Mov.1.mp3"};
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		/*
 		 * System Functionality Tests
@@ -23,7 +23,7 @@ public class FunctionalityTest {
 		musicDownloadingTest2();
 	}
 
-	private static void registerTest() {
+	private static void registerTest() throws Exception {
 		System.out.println("Register test");
 		
 		for (int i=0; i<emails.length; i++) {
@@ -37,7 +37,7 @@ public class FunctionalityTest {
 		loginTest();
 	}
 	
-	private static void loginTest() {
+	private static void loginTest() throws Exception {
 		System.out.println("Login test");
 		
 		for (int i=0; i<emails.length; i++) {
@@ -52,7 +52,7 @@ public class FunctionalityTest {
 		musicUploadingTest();
 	}
 	
-	private static void musicUploadingTest() {
+	private static void musicUploadingTest() throws Exception {
 		System.out.println("Music uploading test");
 		
 		for (int i=0; i<emails.length; i++) {
@@ -66,7 +66,7 @@ public class FunctionalityTest {
 		musicDownloadingTest();
 	}
 	
-	private static void musicDownloadingTest() {
+	private static void musicDownloadingTest() throws Exception {
 		System.out.println("Music downloading test");
 		
 		Object llObj, srObj;
@@ -102,7 +102,7 @@ public class FunctionalityTest {
 		System.out.println("All tests pass. Done.");
 	}
 	
-	private static void musicDownloadingTest2() {
+	private static void musicDownloadingTest2() throws Exception {
 		System.out.println("Music downloading test 2");
 		
 		Object llObj, srObj;

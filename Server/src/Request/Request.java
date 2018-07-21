@@ -12,7 +12,7 @@ import Util.MD5Class;
 
 public class Request {
 	
-	public static String register(String email, String pw) {
+	public static String register(String email, String pw) throws Exception {
 		
 		LinkedList list = new LinkedList();
 		list.add("reg");
@@ -23,7 +23,7 @@ public class Request {
 		return (String) SocketClient.request(list);
 	}
 	
-	public static String login(String email, String pw) {	
+	public static String login(String email, String pw) throws Exception {	
 		
 		LinkedList list = new LinkedList();
 		list.add("lgn");
@@ -34,7 +34,7 @@ public class Request {
 		return (String) SocketClient.request(list);
 	}
 	
-	public static String upload(String uid, String directory) {	
+	public static String upload(String uid, String directory) throws Exception {	
 		
 		/**
 		 * Caution: after user login, you have to verify the uid which is returned by login(), 
@@ -91,7 +91,7 @@ public class Request {
 		return tmp;
 	}
 	
-	public static Object search(String name) {
+	public static Object search(String name) throws Exception {
 		
 		LinkedList list = new LinkedList();
 		list.add("sch");
