@@ -128,21 +128,32 @@ public class CoreFunctions {
 		Database db = null;
 		ResultSet rs = null;
 		
+		/*
+		 *check if there is fileInfo object in the linkedlist' head. 
+		 */
 		Object f = ll.head.getInfo();
 		if (!f.getClass().equals(new FileInfo().getClass()))
 			return "UPL:INVALIDFILEINFO";
 		FileInfo fInfo = (FileInfo) f;
 		
 		try {
+			/*
+			 * checking the database 'postfile' whether there is exactly same file.
+			 */
 			db = new Database();
-			
 			rs = db.readDB("select fileSerial from `amazingmusicdb`.`postfile` where fileSerial='" + fInfo.getFileSerial() + "'");
 			if (rs.next()) {
 				return "UPL:FILEEXISTS";
 			}
 			
+			/*
+			 * the mysql doesn't accept ' string, so we have to change it to ''. 
+			 */
 			String oriName = fInfo.getOriName().replaceAll("'", "''");
 			
+			/*
+			 * adding file information to the database 'waiting file'. 
+			 */
 			String result = db.updateDB("insert into `amazingmusicdb`.`waitingfile` (MD5, fileSerial, uid, oriName) "
 					+"values ('"+fInfo.getMD5()+"', '"+fInfo.getFileSerial()+"', '"+fInfo.getUID()+"', '"+oriName+"')");
 			if (result.equals("UPS")) {
@@ -172,18 +183,33 @@ public class CoreFunctions {
 		SearchResult sr = null;
 		LinkedList result = new LinkedList();
 		
+		
+		/*
+		 * if there isn't string in the linkedlist's head, give error message.
+		 */
 		Object o = ll.head.getInfo();
 		if(!o.getClass().equals("".getClass())) {
 			return "SCH:INVALIDSEARCHNAME";
 		}
 		wantSearch = (String) o;
 		
+		/*
+		 * add a string "SEARCH RESULT" to head of the returning linkedlist.
+		 */
 		result.add("SEARCH RESULT");
+		
 		try {
+			/*
+			 * run database and search files with search keyword. 
+			 */
 			db = new Database();
-			
 			rs = db.readDB("select * from `amazingmusicdb`.`postfile` where oriName like '%" + wantSearch + "%'");
 			
+			/*
+			 * while there is file including search keyword, add SearchResult to linkedlist.
+			 * SearchResult is a object that we made. It includes file uploader's uid and 
+			 * file's serial number.
+			 */
 			while(rs.next()) {
 				String oriName = rs.getString("oriName");
 				String uid = rs.getString("uid");

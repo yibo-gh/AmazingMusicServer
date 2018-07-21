@@ -62,7 +62,6 @@ public class Decoder {
 			case "lgn": return CoreFunctions.login(rest(ll));
 			case "upl": return CoreFunctions.upload(rest(ll));
 			case "sch": return CoreFunctions.search(rest(ll));
-			//case "dnl": return ""; // Note: need modification
 			default: return "0x1A04";
 		}
 	}
