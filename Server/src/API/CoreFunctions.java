@@ -158,6 +158,14 @@ public class CoreFunctions {
 	}
 	
 	public static Object search(LinkedList ll) {
+		
+		/**
+		 * Purpose : receive search keyword from the client and search it from the database postfile
+		 * Input : Linkedlist just including a string
+		 * Output : Object that is string or linkedlist.
+		 * if we success to search, it returns linkedlist with "SEARCH RESULT" head and SearchResult in rest of linkedlist.
+		 * else, we return some error string.
+		 */
 		Database db = null;
 		ResultSet rs = null;
 		String wantSearch = "";
