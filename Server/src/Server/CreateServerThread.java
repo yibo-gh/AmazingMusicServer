@@ -33,8 +33,8 @@ public class CreateServerThread extends Thread {
 		 */
 		
 		try {
-			ObjectInputStream objInStream = new ObjectInputStream(this.clientSocket.getInputStream()); // do I have to use bufferedinputstream?
 			ObjectOutputStream objOutStream = new ObjectOutputStream(this.clientSocket.getOutputStream());
+			ObjectInputStream objInStream = new ObjectInputStream(this.clientSocket.getInputStream()); 
 			
 			/*
 			 *  receive client request from the stream, 
