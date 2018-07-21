@@ -1,5 +1,6 @@
 package Server;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -34,7 +35,7 @@ public class CreateServerThread extends Thread {
 		
 		try {
 			ObjectOutputStream objOutStream = new ObjectOutputStream(this.clientSocket.getOutputStream());
-			ObjectInputStream objInStream = new ObjectInputStream(this.clientSocket.getInputStream()); 
+			ObjectInputStream objInStream = new ObjectInputStream(new BufferedInputStream(this.clientSocket.getInputStream())); 
 			
 			/*
 			 *  receive client request from the stream, 
