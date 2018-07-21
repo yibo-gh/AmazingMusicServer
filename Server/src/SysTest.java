@@ -1,7 +1,6 @@
 import Testers.FunctionalityTest;
 import Testers.RobustnessTest;
 import Testers.ValidationTest;
-import Testers.SearchTest1;
 
 public class SysTest {
 
