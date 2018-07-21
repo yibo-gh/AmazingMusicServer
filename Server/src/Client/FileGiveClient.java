@@ -62,7 +62,7 @@ public class FileGiveClient {
 				 * get some string from the file server.
 				 */
 				objInStream = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
-				result = objInStream.readObject();
+				result = objInStream.readUTF();
 			}
 			else {
 				System.out.println("There isn't a file");

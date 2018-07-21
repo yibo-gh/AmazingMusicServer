@@ -97,7 +97,7 @@ public class CreateFileServerThread extends Thread {
 			/*
 			 * give some string to client
 			 */
-			objOutStream.writeObject(signal);
+			objOutStream.writeUTF(signal);
 			objOutStream.flush();
 
 			try {
