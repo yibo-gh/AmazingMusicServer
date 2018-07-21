@@ -18,8 +18,7 @@ public class SysTest {
 		 * Download.java - localCache
 		 * FunctionalityTest.java - new Download(~here~); (url part)
 		 */
-		SearchTest1.main(null);
-		//ValidationTest.main(null);
+		ValidationTest.main(null);
 		//FunctionalityTest.main(null);
 		//RobustnessTest.main(null);
 	}

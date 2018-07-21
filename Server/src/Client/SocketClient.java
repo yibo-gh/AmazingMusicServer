@@ -43,7 +43,7 @@ public class SocketClient {
 			 * Next, server will sent an object by the result of server works.
 			 * Return the object.
 			 */
-			socket = new Socket("localhost", 18701); // Note: need to change later. need to decide IP address. 
+			socket = new Socket("yg-home.site", 18701); // Note: need to change later. need to decide IP address. 
 			
 			objOutStream = new ObjectOutputStream(socket.getOutputStream());
 			objOutStream.writeObject(list);

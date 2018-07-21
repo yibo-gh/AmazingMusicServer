@@ -1,6 +1,5 @@
 package Testers;
 
-import Object.Download;
 import Object.LinkedList;
 import Object.SearchResult;
 import Request.Request;
@@ -20,9 +19,8 @@ public class FunctionalityTest {
 		 * 3. Music uploading
 		 * 4. Music downloading
 		 */
-		
+		registerTest();
 		musicDownloadingTest2();
-		//registerTest();
 	}
 
 	private static void registerTest() {
@@ -78,7 +76,7 @@ public class FunctionalityTest {
 		String url, filename;
 		
 		/*
-		 * Request to search "Rossette"
+		 * Request to search all files whose filename contains the String "Rossette"
 		 */
 		llObj = Request.search("Rossette");
 		if (llObj.getClass().equals("".getClass())) {
@@ -91,7 +89,7 @@ public class FunctionalityTest {
 		for (int i=0; i<len; i++) {
 			srObj = ll.head.getInfo();
 			sr = (SearchResult)srObj;
-			url = "file://localhost/C:\\Users\\인영\\Documents\\GitHub\\AmazingMusicServer\\Server\\"+sr.getURL();
+			url = "https://yg-home.site/proj/amamusic/audio/"+sr.getURL();
 			filename = "genevahall" + i;
 			if (!Request.download(url,filename).equals("SUCCEED")) {
 				printError(0x04, filename);
@@ -108,7 +106,6 @@ public class FunctionalityTest {
 		System.out.println("Music downloading test 2");
 		
 		Object llObj, srObj;
-		int len;
 		LinkedList ll;
 		SearchResult sr;
 		String uid, url, filename;
@@ -136,7 +133,7 @@ public class FunctionalityTest {
 		ll = (LinkedList) llObj;
 		srObj = ll.head.getInfo();
 		sr = (SearchResult)srObj;
-		url = "file://localhost/C:\\Users\\인영\\Documents\\GitHub\\AmazingMusicServer\\Server\\"+sr.getURL();
+		url = "https://yg-home.site/proj/amamusic/audio/"+sr.getURL();
 		filename = "Mess";
 		Request.download(url, filename);
 		
@@ -144,7 +141,7 @@ public class FunctionalityTest {
 		ll = (LinkedList) llObj;
 		srObj = ll.head.getInfo();
 		sr = (SearchResult)srObj;
-		url = "file://localhost/C:\\Users\\인영\\Documents\\GitHub\\AmazingMusicServer\\Server\\"+sr.getURL();
+		url = "https://yg-home.site/proj/amamusic/audio/"+sr.getURL();
 		filename = "Beethoven";
 		Request.download(url, filename);
 		
@@ -152,7 +149,7 @@ public class FunctionalityTest {
 		ll = (LinkedList) llObj;
 		srObj = ll.head.getInfo();
 		sr = (SearchResult)srObj;
-		url = "file://localhost/C:\\Users\\인영\\Documents\\GitHub\\AmazingMusicServer\\Server\\"+sr.getURL();
+		url = "https://yg-home.site/proj/amamusic/audio/"+sr.getURL();
 		filename = "Fantasy";
 		Request.download(url, filename);
 		
@@ -160,7 +157,7 @@ public class FunctionalityTest {
 		ll = (LinkedList) llObj;
 		srObj = ll.head.getInfo();
 		sr = (SearchResult)srObj;
-		url = "file://localhost/C:\\Users\\인영\\Documents\\GitHub\\AmazingMusicServer\\Server\\"+sr.getURL();
+		url = "https://yg-home.site/proj/amamusic/audio/"+sr.getURL();
 		filename = "손열음";
 		Request.download(url, filename);
 		

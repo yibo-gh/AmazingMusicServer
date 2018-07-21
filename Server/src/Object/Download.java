@@ -19,6 +19,12 @@ public class Download {
 	
 	public String start() {
 		try {
+			/**
+			 * Purpose: Start downloading at "C:/Users/<system user name>/AppData/AmaMusic/" using file's url on server.
+			 * Input Requirement: Nothing
+			 * Output: return SUCCEED or DOWN:FAIL message String
+			 */
+			
 			URL website = new URL(this.url);
 			ReadableByteChannel rbc = Channels.newChannel(website.openStream());
 			
@@ -31,7 +37,6 @@ public class Download {
 			fos.close();
 			return "SUCCEED";
 		} catch (IOException e) {
-			e.printStackTrace();
 			return "DOWN:FAIL";
 		}
 	}

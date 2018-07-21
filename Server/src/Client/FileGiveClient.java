@@ -33,7 +33,7 @@ public class FileGiveClient {
 			/*
 			 * Open a socket and get connection. Then Send the input linkedlist to server.
 			 */
-			socket = new Socket("localhost", 18702);
+			socket = new Socket("yg-home.site", 18702);
 			
 			objOutStream = new ObjectOutputStream(socket.getOutputStream());
 			objOutStream.writeObject(list);
