@@ -1,13 +1,14 @@
 package Client;
 
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.io.*;
 
 import Object.LinkedList;
 
 public class FileGiveClient {
 	
-	public static Object fileGiveRequest(LinkedList list, String Filename) {
+	public static Object fileGiveRequest(LinkedList list, String Filename) throws UnknownHostException, IOException {
 		
 		/**
 		 * Purpose : give file server the music file.
@@ -19,7 +20,7 @@ public class FileGiveClient {
 		 * Output : String that file server give.
 		 * 
 		 */
-		Socket socket = null;
+		Socket socket = new Socket("yg-home.site", 18702);
 		ObjectOutputStream objOutStream = null;
 		ObjectInputStream objInStream = null;
 		FileInputStream fileInStream = null;
@@ -33,7 +34,7 @@ public class FileGiveClient {
 			/*
 			 * Open a socket and get connection. Then Send the input linkedlist to server.
 			 */
-			socket = new Socket("yg-home.site", 18702);
+			//socket = new Socket("yg-home.site", 18702);
 			
 			objOutStream = new ObjectOutputStream(socket.getOutputStream());
 			objOutStream.writeObject(list);
