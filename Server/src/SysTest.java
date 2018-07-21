@@ -1,3 +1,5 @@
+import java.net.Socket;
+
 import Testers.FunctionalityTest;
 import Testers.RobustnessTest;
 import Testers.ValidationTest;

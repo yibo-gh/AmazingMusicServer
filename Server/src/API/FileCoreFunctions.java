@@ -122,7 +122,7 @@ public class FileCoreFunctions {
 				/*
 				 * if there isn't directory named uid, make it.
 				 */
-				File uidDir = new File("/Volumes/Common Volume/Sites/https://yg-home.site/proj/amamusic/audio/" + flInfo.getUID());
+				File uidDir = new File("/Volumes/Common Volume/Sites/yg-home.site/proj/amamusic/audio/" + flInfo.getUID());
 				if(!uidDir.exists()) {
 					uidDir.mkdir();
 				}
@@ -130,7 +130,7 @@ public class FileCoreFunctions {
 				/*
 				 * move music from temporary file to uid named file
 				 */
-				String newPath = "/Volumes/Common Volume/Sites/https://yg-home.site/proj/amamusic/audio/" + flInfo.getUID() + File.separatorChar + flInfo.getFileSerial() + flInfo.getExension();
+				String newPath = "/Volumes/Common Volume/Sites/yg-home.site/proj/amamusic/audio/" + flInfo.getUID() + File.separatorChar + flInfo.getFileSerial() + flInfo.getExension();
 				System.out.println(newPath);
 				Files.move(Paths.get(path), Paths.get(newPath), StandardCopyOption.REPLACE_EXISTING);
 				
