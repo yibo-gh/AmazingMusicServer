@@ -89,7 +89,7 @@ public class FunctionalityTest {
 		for (int i=0; i<len; i++) {
 			srObj = ll.head.getInfo();
 			sr = (SearchResult)srObj;
-			url = "https://yg-home.site/proj/amamusic/audio/"+sr.getURL();
+			url = sr.getURL();
 			filename = "genevahall" + i;
 			if (!Request.download(url,filename).equals("SUCCEED")) {
 				printError(0x04, filename);

@@ -25,7 +25,7 @@ public class Download {
 			 * Output: return SUCCEED or DOWN:FAIL message String
 			 */
 			
-			URL website = new URL(this.url);
+			URL website = new URL("https://yg-home.site/proj/amamusic/audio/" + this.url);
 			ReadableByteChannel rbc = Channels.newChannel(website.openStream());
 			
 			String localCache = "C:\\Users\\" + this.sysUsername + "\\AppData\\AmaMusic\\";
